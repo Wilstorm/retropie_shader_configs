@@ -1,0 +1,2 @@
+Nestopia,256,224,raster,horizontal,4,3
+FCEUmm,240,224,raster,horizontal,8,7
