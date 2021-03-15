@@ -22,6 +22,9 @@ import shutil
 def generateConfigs(arg1, arg2, arg3, arg4):
 		
     console = False
+    if "mame2000" in arg1:
+        fileName = "resolution_db/mame2000.txt"
+        coreName = "MAME 2000"
     if "mame2003" in arg1:
         fileName = "resolution_db/mame2003.txt"
         coreName = "MAME 2003 (0.78)"

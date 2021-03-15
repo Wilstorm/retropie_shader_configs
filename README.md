@@ -1,6 +1,6 @@
 # RetroPie Shader Config Files
 
-This script creates cfg files for optimum shader appearence for use with RetroPie. Works only for lr-mame2003 (MAME 0.78), mame2003-plus-libretro (MAME 0.78 + plus additions) and consoles (currently only Nestopia/NES).
+This script creates cfg files for optimum shader appearence for use with RetroPie. Works only for mame2000-libretro (MAME 0.37b5), mame2003-libretro (MAME 0.78), mame2003-plus-libretro (MAME 0.78 + plus additions) and consoles (currently only Nestopia/NES).
 
 ### Usage:
 
@@ -8,13 +8,14 @@ python pi_shader_configs.py \<*core*\> \<*shader*\> \<*screen width*\> \<*screen
 
 ## Parameters:
 
-  * core (*mame2003*, *2003plus* or *consoles*)
+  * core (*mame2000*, *mame2003*, *2003plus*, etc.)
   * shader (*crtpi* or *zfast*)
   * screen width (i.e. *1920* or *curvature*)
   * screen height (i.e. *1080* or *leave blank*)
 
 **Core:**
-  * lr-mame2003 = *mame2003*
+  * mame2000-libretro = *mame2000*
+  * mame2003-libretro = *mame2003*
   * mame2003-plus-libretro = *2003plus*
   * Nestopia/NES = *consoles*
 
@@ -87,4 +88,6 @@ NOTE: For the lr-nestopia configs, you must set the lr-nestopia emulator as your
 ### Thanks:
 Thanks to dankcushions for creating the original script, Andrew-H2O for refining the algorithms and UDb23 for the DB files.
 
-Also special thanks to davej for creating the crt-pi shader and ghogan42 for creating zfast.
+A special thanks to davej for creating the crt-pi shader and ghogan42 for creating zfast.
+
+Also a special thanks to the [Libretro](https://github.com/libretro) development team and others who make their work publicly available and share their knowledge. Without them this project wouldn't have been possible.
