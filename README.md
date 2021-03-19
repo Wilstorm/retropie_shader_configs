@@ -1,6 +1,6 @@
 # RetroPie Shader Config Files
 
-This script creates cfg files for optimum shader appearence for use with RetroPie. Works only for mame2000-libretro (MAME 0.37b5), mame2003-libretro (MAME 0.78), mame2003-plus-libretro (MAME 0.78 + plus additions) and consoles (currently only Nestopia/NES).
+This script creates cfg files for optimum shader appearence for use with RetroPie. Works only for mame2000-libretro (MAME 0.37b5), mame2003-libretro (MAME 0.78), mame2003-plus-libretro (MAME 0.78 + plus additions), mame2010-libretro (MAME 0.139) and consoles (currently only Nestopia/NES).
 
 ### Usage:
 
@@ -17,6 +17,7 @@ python pi_shader_configs.py \<*core*\> \<*shader*\> \<*screen width*\> \<*screen
   * mame2000-libretro = *mame2000*
   * mame2003-libretro = *mame2003*
   * mame2003-plus-libretro = *2003plus*
+  * mame2010-libretro = *mame2010*
   * Nestopia/NES = *consoles*
 
 **Shader:**
@@ -34,11 +35,11 @@ python pi_shader_configs.py \<*core*\> \<*shader*\> \<*screen width*\> \<*screen
 Clone into a directory, navigate to that directory from a command prompt, and then run the script. Some examples are shown below:
 
   ```python pi_shader_configs.py mame2003 crtpi 1920 1080```  
-  
+
   ```python pi_shader_configs.py mame2003 crtpi curvature```  
-  
+
   ```python pi_shader_configs.py 2003plus zfast 1280 720```  
-  
+
   ```python pi_shader_configs.py 2003plus zfast curvature```  
 
 This will create a folder with the resolution, i.e., *1920x1080* (or *curvature*). Beneath that folder will be another subfolder with the core name, i.e., *MAME 2003 (0.78)*. The individual cfg files are stored in the core subfolder. When the script completes it will print the path where you should transfer the files within RetroPie.

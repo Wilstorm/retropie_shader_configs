@@ -20,7 +20,7 @@ import shutil
 
 
 def generateConfigs(arg1, arg2, arg3, arg4):
-		
+
     console = False
     if "mame2000" in arg1:
         fileName = "resolution_db/mame2000.txt"
@@ -31,6 +31,10 @@ def generateConfigs(arg1, arg2, arg3, arg4):
     elif "2003plus" in arg1:
         fileName = "resolution_db/mame2003-plus.txt"
         coreName = "MAME 2003-Plus"
+    elif "mame2010" in arg1:
+        fileName = "resolution_db/mame2010.txt"
+        coreName = "MAME 2010"
+
     elif "consoles" in arg1:
         fileName = "resolution_db/consoles.txt"
         # Initialise coreName for consoles to allow log file creation
@@ -68,7 +72,7 @@ def generateConfigs(arg1, arg2, arg3, arg4):
         gameCount = gameCount+1
     	# strip line breaks
         gameInfo = gameInfo.rstrip()
-        
+
         # parse info
         gameInfo = gameInfo.split(",")
         gameName = gameInfo[0]
