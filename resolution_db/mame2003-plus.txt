@@ -1065,7 +1065,7 @@ dinou,384,224,raster,horizontal,4,3
 dirtfoxj,224,288,raster,vertical,3,4
 disco,240,240,raster,vertical,3,4
 discof,240,240,raster,vertical,3,4
-diverboy,304,240,raster,horizontal,4,3
+diverboy,318,240,raster,horizontal,4,3
 djboy,256,224,raster,horizontal,4,3
 dkgenm72,384,256,raster,horizontal,4,3
 dkgensan,384,256,raster,horizontal,4,3
@@ -3209,6 +3209,7 @@ psychosj,384,224,raster,horizontal,4,3
 psyforce,480,480,raster,horizontal,4,3
 ptblank,288,224,raster,horizontal,4,3
 pturn,224,256,raster,vertical,3,4
+pubball,384,255,raster,horizontal,4,3
 puchicar,320,232,raster,horizontal,4,3
 puckman,224,288,raster,vertical,3,4
 puckmana,224,288,raster,vertical,3,4
@@ -4101,6 +4102,7 @@ ssideki2,320,224,raster,horizontal,4,3
 ssideki3,320,224,raster,horizontal,4,3
 ssideki4,320,224,raster,horizontal,4,3
 sslam,304,240,raster,horizontal,4,3
+sslama,304,240,raster,horizontal,4,3
 ssmissin,224,256,raster,vertical,3,4
 ssoldier,320,240,raster,horizontal,4,3
 ssonicbr,320,224,raster,horizontal,4,3
