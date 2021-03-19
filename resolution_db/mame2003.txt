@@ -1004,7 +1004,7 @@ dinou,384,224,raster,horizontal,4,3
 dirtfoxj,224,288,raster,vertical,3,4
 disco,240,240,raster,vertical,3,4
 discof,240,240,raster,vertical,3,4
-diverboy,304,240,raster,horizontal,4,3
+diverboy,318,240,raster,horizontal,4,3
 djboy,256,224,raster,horizontal,4,3
 dkgenm72,384,256,raster,horizontal,4,3
 dkgensan,384,256,raster,horizontal,4,3
