@@ -34,7 +34,9 @@ def generateConfigs(arg1, arg2, arg3, arg4):
     elif "mame2010" in arg1:
         fileName = "resolution_db/mame2010.txt"
         coreName = "MAME 2010"
-
+    elif "mame2015" in arg1:
+        fileName = "resolution_db/mame2015.txt"
+        coreName = "MAME 2015"
     elif "consoles" in arg1:
         fileName = "resolution_db/consoles.txt"
         # Initialise coreName for consoles to allow log file creation
