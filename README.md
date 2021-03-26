@@ -2,13 +2,13 @@
 
 This script creates cfg files for optimum shader appearence for use with RetroPie. Works with the following cores:
 
-mame2000-libretro (MAME 0.37b5)
-mame2003-libretro (MAME 0.78)
-mame2003-plus-libretro (MAME 0.78 + plus additions)
-mame2010-libretro (MAME 0.139)
-mame2015-libretro (MAME 0.160)
-mame2016-libretro (MAME 0.174)
-consoles (currently only Nestopia/NES)
+mame2000-libretro (MAME 0.37b5)<br>
+mame2003-libretro (MAME 0.78)<br>
+mame2003-plus-libretro (MAME 0.78 + plus additions)<br>
+mame2010-libretro (MAME 0.139)<br>
+mame2015-libretro (MAME 0.160)<br>
+mame2016-libretro (MAME 0.174)<br>
+consoles (currently only Nestopia/NES)<br>
 
 ### Usage:
 
@@ -100,4 +100,4 @@ Thanks to dankcushions for creating the original script, Andrew-H2O for refining
 
 A special thanks to davej for creating the crt-pi shader and ghogan42 for creating zfast.
 
-Also a special thanks to the [Libretro](https://github.com/libretro) development team and others who make their work publicly available and share their knowledge. Without them this project wouldn't have been possible.
+Also a special thanks to the [RetroPie](https://retropie.org.uk) and [Libretro](https://github.com/libretro) development teams and others who make their work publicly available and share their knowledge. Without them this project wouldn't have been possible.
