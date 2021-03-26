@@ -2,13 +2,13 @@
 
 This script creates cfg files for optimum shader appearence for use with RetroPie. Works with the following cores:
 
-mame2000-libretro (MAME 0.37b5)<br>
-mame2003-libretro (MAME 0.78)<br>
-mame2003-plus-libretro (MAME 0.78 + plus additions)<br>
-mame2010-libretro (MAME 0.139)<br>
-mame2015-libretro (MAME 0.160)<br>
-mame2016-libretro (MAME 0.174)<br>
-consoles (currently only Nestopia/NES)<br>
+*mame2000-libretro (MAME 0.37b5)*<br>
+*mame2003-libretro (MAME 0.78)*<br>
+*mame2003-plus-libretro (MAME 0.78 + plus additions)*<br>
+*mame2010-libretro (MAME 0.139)*<br>
+*mame2015-libretro (MAME 0.160)*<br>
+*mame2016-libretro (MAME 0.174)*<br>
+*consoles (currently only Nestopia/NES)*
 
 ### Usage:
 
@@ -27,6 +27,7 @@ python pi_shader_configs.py \<*core*\> \<*shader*\> \<*screen width*\> \<*screen
   * mame2003-plus-libretro = *2003plus*
   * mame2010-libretro = *mame2010*
   * mame2015-libretro = *mame2015*
+  * mame2016-libretro = *mame2016*
   * Nestopia/NES = *consoles*
 
 **Shader:**
