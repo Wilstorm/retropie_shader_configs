@@ -40,6 +40,9 @@ def generateConfigs(arg1, arg2, arg3, arg4):
     elif "mame2016" in arg1:
         fileName = "resolution_db/mame2016.txt"
         coreName = "MAME 2016"
+    elif "fba2012" in arg1:
+        fileName = "resolution_db/fba2012.txt"
+        coreName = "FB Alpha"
     elif "consoles" in arg1:
         fileName = "resolution_db/consoles.txt"
         # Initialise coreName for consoles to allow log file creation

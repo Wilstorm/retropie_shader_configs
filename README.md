@@ -2,13 +2,14 @@
 
 This script creates cfg files for optimum shader appearence for use with RetroPie. Works with the following cores:
 
-*mame2000-libretro (MAME 0.37b5)*<br>
-*mame2003-libretro (MAME 0.78)*<br>
-*mame2003-plus-libretro (MAME 0.78 + plus additions)*<br>
-*mame2010-libretro (MAME 0.139)*<br>
-*mame2015-libretro (MAME 0.160)*<br>
-*mame2016-libretro (MAME 0.174)*<br>
-*consoles (currently only Nestopia/NES)*
+  mame2000-libretro *(based on MAME 0.37b5)*<br>
+  mame2003-libretro *(based on MAME 0.78)*<br>
+  mame2003-plus-libretro *(based on MAME 0.78 + additions)*<br>
+  mame2010-libretro *(based on MAME 0.139)*<br>
+  mame2015-libretro *(based on MAME 0.160)*<br>
+  mame2016-libretro *(based on MAME 0.174)*<br>
+  fbalpha2012-libretro *(based on FB Alpha 0.2.97.30)*<br>
+  consoles *(currently only Nestopia/NES)*<br>
 
 ### Usage:
 
@@ -21,23 +22,24 @@ python pi_shader_configs.py \<*core*\> \<*shader*\> \<*screen width*\> \<*screen
   * screen width (i.e. *1920* or *curvature*)
   * screen height (i.e. *1080* or *leave blank*)
 
-**Core:**
+### Core:
   * mame2000-libretro = *mame2000*
   * mame2003-libretro = *mame2003*
   * mame2003-plus-libretro = *2003plus*
   * mame2010-libretro = *mame2010*
   * mame2015-libretro = *mame2015*
   * mame2016-libretro = *mame2016*
+  * fbalpha2012-libretro = *fba2012*
   * Nestopia/NES = *consoles*
 
-**Shader:**
+### Shader:
   * *crtpi*
   * *zfast*
 
-**Screen Width:**
+### Screen Width:
   * any width or *curvature*
 
-**Screen Height:**
+### Screen Height:
   * any height *or* leave blank (if using *curvature* in width)
 
 ## Examples:
@@ -61,7 +63,7 @@ For information and an explanation on how the cfg files improve shaders see the 
 ## Additional Information:
 
 ### Resolution Databases:
-Due to core updates or errors during the creation process there may be certain games with missing or incorrect information from the resolution db files (located in the *resolution_db* folder). These are comma delimited text files that are very easy to modify or add new entries. One game entry per line. If you prefer to just leave a message with the correct information I'll update the database files in the repo.
+Due to updates there may be certain cores with missing, incorrect or extraneous information in the resolution db files (located in the *resolution_db* folder). They are comma delimited text files that are very easy to modify. You can update, delete or add new entries but keep only one game entry per line. You're more than welcome to submit a PR with any corrections or if you prefer to just leave a message, open an issue with the correct information and I'll update the DB files. Whatever you're more comfortable with works.
 
 Below is an example from a resolution db file for the game ```1942```. The fields in order:
 
