@@ -9,6 +9,7 @@ This script creates cfg files for optimum shader appearence for use with RetroPi
   mame2015-libretro *(based on MAME 0.160)*<br>
   mame2016-libretro *(based on MAME 0.174)*<br>
   fbalpha2012-libretro *(based on FB Alpha 0.2.97.30)*<br>
+  fbneo-libretro *(based on FinalBurn Neo current ver.)*<br>  
   consoles *(currently only Nestopia/NES)*<br>
 
 ### Usage:
@@ -30,6 +31,7 @@ python pi_shader_configs.py \<*core*\> \<*shader*\> \<*screen width*\> \<*screen
   * mame2015-libretro = *mame2015*
   * mame2016-libretro = *mame2016*
   * fbalpha2012-libretro = *fba2012*
+  * FBNeo-libretro = *fbneo*
   * Nestopia/NES = *consoles*
 
 ### Shader:

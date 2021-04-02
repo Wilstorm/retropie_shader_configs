@@ -43,6 +43,9 @@ def generateConfigs(arg1, arg2, arg3, arg4):
     elif "fba2012" in arg1:
         fileName = "resolution_db/fba2012.txt"
         coreName = "FB Alpha"
+    elif "fbneo" in arg1:
+        fileName = "resolution_db/fbneo.txt"
+        coreName = "FinalBurn Neo"
     elif "consoles" in arg1:
         fileName = "resolution_db/consoles.txt"
         # Initialise coreName for consoles to allow log file creation
