@@ -1,12 +1,12 @@
-# creates cfg files for crt-pi or zfast
+# creates cfg files for retropie using crt-pi or zfast
 # params are:
-# * core (eg mame2003 or 2003plus)
+# * core (eg mame2003 or fbneo)
 # * shader (eg crtpi or zfast)
 # * screen width (eg 1920) OR curvature
 # * screen height (eg 1080)
 # example usage:
 # python crt_pi_configs.py mame2003 crtpi 1920 1080
-# python crt_pi_configs.py 2003plus zfast 1920 1080
+# python crt_pi_configs.py fbneo zfast 1920 1080
 # python crt_pi_configs.py consoles crtpi 1920 1080
 # python crt_pi_configs.py 2003plus zfast curvature
 # python -c "import pi_shader_configs; pi_shader_configs.createZip('crtpi',False,1920,1080)"
@@ -130,9 +130,6 @@ def generateConfigs(arg1, arg2, arg3, arg4):
                         shader = "zfast_crt_curve_vertical.glslp"
                     else:
                         shader = "zfast_crt_standard_vertical.glslp"
-                # flip vertical games
-                #gameWidth = int(gameInfo[2])
-                #gameHeight = int(gameInfo[1])
                 # Calculate pixel 'squareness' and adjust gameHeight figure to keep the same aspect ratio, but with square pixels (keeping Width as-was to avoid scaling artifacts)
                 pixelSquareness = ((gameWidth/gameHeight)/aspectRatio)
                 gameHeight = int(gameHeight * pixelSquareness)
