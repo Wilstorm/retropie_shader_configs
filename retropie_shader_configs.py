@@ -236,7 +236,7 @@ def createZip(shaderName="crtpi", curvature=False, screenWidth=0, screenHeight=0
             path = "curvature"
         else:
             resolution = str(screenWidth) + "x" + str(screenHeight)
-            outputFileName = "crt-pi_configs_standard_" + resolution
+            outputFileName = "crt-pi_configs_" + resolution
             path = resolution
     elif "zfast" in shaderName:
         if curvature:
@@ -244,7 +244,7 @@ def createZip(shaderName="crtpi", curvature=False, screenWidth=0, screenHeight=0
             path = "curvature"
         else:
             resolution = str(screenWidth) + "x" + str(screenHeight)
-            outputFileName = "zfast_configs_standard_" + resolution
+            outputFileName = "zfast_configs_" + resolution
             path = resolution        
     outputFileName = outputFileName.replace(" ", "")
     outputFileName = outputFileName.lower()
