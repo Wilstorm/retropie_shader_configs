@@ -6466,8 +6466,8 @@ worldwar,224,400,raster,vertical,3,4
 wownfant,256,224,raster,horizontal,4,3
 wpksocv2,320,224,raster,horizontal,4,3
 wrally,368,232,raster,horizontal,4,3
-wrally2,384*2,240,raster,horizontal,8,3
-wrally2a,384*2,240,raster,horizontal,8,3
+wrally2,368,240,raster,horizontal,8,3
+wrally2a,368,240,raster,horizontal,8,3
 wrallya,368,232,raster,horizontal,4,3
 wrallyat,368,232,raster,horizontal,4,3
 wrallyb,368,232,raster,horizontal,4,3
@@ -6537,8 +6537,8 @@ xmen2pa,288,224,raster,horizontal,4,3
 xmen2pe,288,224,raster,horizontal,4,3
 xmen2pj,288,224,raster,horizontal,4,3
 xmen2pu,288,224,raster,horizontal,4,3
-xmen6p,288*2,224,raster,horizontal,8,3
-xmen6pu,288*2,224,raster,horizontal,8,3
+xmen6p,288,224,raster,horizontal,8,3
+xmen6pu,288,224,raster,horizontal,8,3
 xmena,288,224,raster,horizontal,4,3
 xmenaa,288,224,raster,horizontal,4,3
 xmenj,288,224,raster,horizontal,4,3
