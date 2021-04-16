@@ -59,12 +59,14 @@ def generateConfigs(arg1, arg2, arg3, arg4):
 
     if "curvature" in arg3:
         curvature = True
+        scaleFactor = "N/A"
     else:
         curvature = False
         screenWidth = int(arg3)
         screenHeight = int(arg4)
         # Tolerance for "scale to fit" in either axis - the unit is the percentage of the game size in that direction.  Default is 25 (i.e. 25%)
         tolerance = 25
+        # Create output log file for detail info
         resolution = str(screenWidth) + "x" + str(screenHeight)
         outputLogFile = open(coreName + "_" + resolution + "_" + shaderName + ".csv", "w")
         outputLogFile.write("Tolerance : ,{}\n".format(tolerance))
@@ -74,14 +76,16 @@ def generateConfigs(arg1, arg2, arg3, arg4):
     print("Opened database file {}".format(fileName))
     if not curvature:
         print("created log file ./{}".format(outputLogFile.name))
+    # Progress indicator
     print("Creating system-specific config files.\n")
     sys.stdout.write('[')
     sys.stdout.flush()
     gameCount = 0
 
     for gameInfo in resolutionDbFile:
+        # Progress indicator
         gameCount = gameCount+1
-    	# strip line breaks
+        # strip line breaks
         gameInfo = gameInfo.rstrip()
 
         # parse info
@@ -106,10 +110,11 @@ def generateConfigs(arg1, arg2, arg3, arg4):
         if not os.path.isdir(path):
             os.makedirs (path)
 
-        # create cfg file
+        # Progress indicator
         if (gameCount%100 == 0):
             sys.stdout.write('.')
             sys.stdout.flush()
+        # create cfg file
         newCfgFile = open(path + "/" + cfgFileName, "w")
 
         if "vector" in gameType:
@@ -149,21 +154,12 @@ def generateConfigs(arg1, arg2, arg3, arg4):
                 pixelSquareness = ((gameWidth/gameHeight)/aspectRatio)
                 gameWidth = int(gameWidth / pixelSquareness)
 
-            # Write the output file for curvature cfg
-            if curvature:
-                scaleFactor = "N/A"
-                newCfgFile.write("# Auto-generated {} .cfg\n".format(shader))
-                newCfgFile.write("# Game Title : {} , Width : {}, Height : {}, Aspect : {}:{}, Scale Factor : {}\n".format(gameName, gameWidth, gameHeight, int(gameInfo[5]), int(gameInfo[6]),scaleFactor))
-                newCfgFile.write("# Place in /opt/retropie/configs/all/retroarch/config/{}/\n".format(coreName))
-                newCfgFile.write("video_shader_enable = \"true\"\n")
-                newCfgFile.write("video_shader = \"/opt/retropie/configs/all/retroarch/shaders/{}\"\n".format(shader))
-
             if not curvature:
                 # Check scale factor in horizontal and vertical directions
                 vScaling = screenHeight/gameHeight
                 hScaling = screenWidth/gameWidth
             	
-                # Keep whichever scaling factor is smaller. 
+                # Keep whichever scaling factor is smaller
                 if vScaling < hScaling:
                     scaleFactor = vScaling
                 else:
@@ -197,16 +193,20 @@ def generateConfigs(arg1, arg2, arg3, arg4):
                 viewportX = int((screenWidth - viewportWidth) / 2)
                 viewportY = int((screenHeight - viewportHeight) / 2)
                 
-                # Write the output file non-curvature cfg
-                newCfgFile.write("# Auto-generated {} .cfg\n".format(shader))
-                newCfgFile.write("# Game Title : {} , Width : {}, Height : {}, Aspect : {}:{}, Scale Factor : {}\n".format(gameName, gameWidth, gameHeight, int(gameInfo[5]), int(gameInfo[6]),scaleFactor))
-                newCfgFile.write("# Screen Width : {}, Screen Height : {}\n".format(screenWidth, screenHeight))
-                newCfgFile.write("# Place in /opt/retropie/configs/all/retroarch/config/{}/\n".format(coreName))
+                outputLogFile.write("{},{},{},{},{},{},{},{},{},{},{}\n".format(gameInfo[0],gameInfo[1],gameInfo[2],gameInfo[4],gameInfo[5],gameInfo[6],viewportWidth,viewportHeight,viewportX,viewportY,scaleFactor))
 
-                # Disable shader if the scale is too small
+            # Write the shader cfg file
+            newCfgFile.write("# Auto-generated {} .cfg\n".format(shader))
+            newCfgFile.write("# Game Title : {} , Width : {}, Height : {}, Aspect : {}:{}, Scale Factor : {}\n".format(gameName, gameWidth, gameHeight, int(gameInfo[5]), int(gameInfo[6]), scaleFactor))
+            if not curvature:
+                newCfgFile.write("# Screen Width : {}, Screen Height : {}\n".format(screenWidth, screenHeight))
+            newCfgFile.write("# Place in /opt/retropie/configs/all/retroarch/config/{}/\n".format(coreName))
+            newCfgFile.write("video_shader_enable = \"true\"\n")
+            newCfgFile.write("video_shader = \"/opt/retropie/configs/all/retroarch/shaders/{}\"\n".format(shader))
+
+            # Disable shader if the scale factor is less than 3
+            if not curvature:
                 if scaleFactor >= 3:
-                    newCfgFile.write("video_shader_enable = \"true\"\n")
-                    newCfgFile.write("video_shader = \"/opt/retropie/configs/all/retroarch/shaders/{}\"\n".format(shader))
                     newCfgFile.write("aspect_ratio_index = \"23\"\n")
                     newCfgFile.write("custom_viewport_width = \"{}\"\n".format(viewportWidth))
                     newCfgFile.write("custom_viewport_height = \"{}\"\n".format(viewportHeight))
@@ -216,13 +216,13 @@ def generateConfigs(arg1, arg2, arg3, arg4):
                     newCfgFile.write("# Insufficient resolution for good quality shader\n")
                     newCfgFile.write("video_shader_enable = \"false\"\n")
 
-                outputLogFile.write("{},{},{},{},{},{},{},{},{},{},{}\n".format(gameInfo[0],gameInfo[1],gameInfo[2],gameInfo[4],gameInfo[5],gameInfo[6],viewportWidth,viewportHeight,viewportX,viewportY,scaleFactor))
-
         newCfgFile.close()
 
     resolutionDbFile.close()
+    # Progress indicator
     print("]\n")
     print("Done!\n")
+    # Close output log file
     if not curvature:
         outputLogFile.close()
         print("Log written to ./{}  <--Delete if not needed".format(outputLogFile.name))
