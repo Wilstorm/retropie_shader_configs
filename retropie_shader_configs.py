@@ -64,9 +64,9 @@ def generateConfigs(arg1, arg2, arg3, arg4):
         curvature = False
         screenWidth = int(arg3)
         screenHeight = int(arg4)
-        # Tolerance for "scale to fit" in either axis - the unit is the percentage of the game size in that direction.  Default is 25 (i.e. 25%)
+        # Tolerance for "scale to fit" in either axis - the unit is the percentage of the game size in that direction. Default is 25 (i.e. 25%)
         tolerance = 25
-        # Create output log file for detail info
+        # Create output log file with detail info
         resolution = str(screenWidth) + "x" + str(screenHeight)
         outputLogFile = open(coreName + "_" + resolution + "_" + shaderName + ".csv", "w")
         outputLogFile.write("Tolerance : ,{}\n".format(tolerance))
@@ -88,7 +88,7 @@ def generateConfigs(arg1, arg2, arg3, arg4):
         # strip line breaks
         gameInfo = gameInfo.rstrip()
 
-        # parse info
+        # parse DB info
         gameInfo = gameInfo.split(",")
         gameName = gameInfo[0]
         gameWidth = int(gameInfo[1])
@@ -118,7 +118,7 @@ def generateConfigs(arg1, arg2, arg3, arg4):
         newCfgFile = open(path + "/" + cfgFileName, "w")
 
         if "vector" in gameType:
-            # Vector games shouldn't use shaders, so clear it out
+            # Vector games shouldn't use shaders, so disable them
             newCfgFile.write("# Auto-generated vector .cfg\n")
             newCfgFile.write("# Place in /opt/retropie/configs/all/retroarch/config/{}/\n".format(coreName))
             newCfgFile.write("video_shader_enable = \"false\"\n")
