@@ -90,10 +90,10 @@ def generateConfigs(arg1, arg2, arg3, arg4):
         # Progress indicator
         gameCount = gameCount+1
 
-        # strip line breaks
+        # Strip line breaks
         gameInfo = gameInfo.rstrip()
 
-        # parse DB info
+        # Parse DB info
         gameInfo = gameInfo.split(",")
         gameName = gameInfo[0]
         gameWidth = int(gameInfo[1])
@@ -195,16 +195,16 @@ def generateConfigs(arg1, arg2, arg3, arg4):
 
                 outputLogFile.write("{},{},{},{},{},{},{},{},{},{},{}\n".format(gameInfo[0], gameInfo[1], gameInfo[2], gameInfo[4], gameInfo[5], gameInfo[6], viewportWidth, viewportHeight, viewportX, viewportY, scaleFactor))
 
-        # create cfg file
+        # Create cfg file
         newCfgFile = open(path + "/" + cfgFileName, "w")
 
-        # Vector games shouldn't use shaders, so disable them
+        # Vector games shouldn't use shaders; disable them
         if "vector" in gameType:
             newCfgFile.write("# Auto-generated vector .cfg\n")
             newCfgFile.write("# Place in /opt/retropie/configs/all/retroarch/config/{}/\n".format(coreName))
             newCfgFile.write("video_shader_enable = \"false\"\n")
 
-        # Write the shader cfg file for non-vector games
+        # Write shader cfgs for non-vector games
         else:
             newCfgFile.write("# Auto-generated {} .cfg\n".format(shader))
             newCfgFile.write("# Game Title : {} , Width : {}, Height : {}, Aspect : {}:{}, Scale Factor : {}\n".format(gameName, gameWidth, gameHeight, int(gameInfo[5]), int(gameInfo[6]), scaleFactor))
@@ -263,7 +263,7 @@ def createZip(shaderName="crtpi", curvature=False, screenWidth=0, screenHeight=0
     print("Creating zipfile {}".format(outputFileName))
     shutil.make_archive(outputFileName, "zip", path)
 
-    # Now delete config dirs
+    # Delete config dirs
     print("Deleting temp directory: {}".format(path))
     shutil.rmtree(path)
 
