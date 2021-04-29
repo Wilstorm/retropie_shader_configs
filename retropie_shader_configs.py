@@ -114,16 +114,8 @@ def generateConfigs(arg1, arg2, arg3, arg4):
         if (gameCount%100 == 0):
             sys.stdout.write('.')
             sys.stdout.flush()
-        # create cfg file
-        newCfgFile = open(path + "/" + cfgFileName, "w")
 
-        if "vector" in gameType:
-            # Vector games shouldn't use shaders, so disable them
-            newCfgFile.write("# Auto-generated vector .cfg\n")
-            newCfgFile.write("# Place in /opt/retropie/configs/all/retroarch/config/{}/\n".format(coreName))
-            newCfgFile.write("video_shader_enable = \"false\"\n")
-
-        else:
+        if not "vector" in gameType:
             if "vertical" in gameOrientation:
                 if "crtpi" in shaderName:
                     if curvature:
@@ -158,7 +150,7 @@ def generateConfigs(arg1, arg2, arg3, arg4):
                 # Check scale factor in horizontal and vertical directions
                 vScaling = screenHeight/gameHeight
                 hScaling = screenWidth/gameWidth
-            	
+
                 # Keep whichever scaling factor is smaller
                 if vScaling < hScaling:
                     scaleFactor = vScaling
@@ -188,13 +180,22 @@ def generateConfigs(arg1, arg2, arg3, arg4):
                     # Add 'overscan' area for Nestopia consoles, as per original script (more or less)
                     if ("console" and "Nestopia" in coreName):
                         viewportHeight = viewportHeight + 8 * int(scaleFactor)
-                    
+
                 # Center screen within target resolution
                 viewportX = int((screenWidth - viewportWidth) / 2)
                 viewportY = int((screenHeight - viewportHeight) / 2)
-                
+
                 outputLogFile.write("{},{},{},{},{},{},{},{},{},{},{}\n".format(gameInfo[0],gameInfo[1],gameInfo[2],gameInfo[4],gameInfo[5],gameInfo[6],viewportWidth,viewportHeight,viewportX,viewportY,scaleFactor))
 
+        # create cfg file
+        newCfgFile = open(path + "/" + cfgFileName, "w")
+
+        if "vector" in gameType:
+            # Vector games shouldn't use shaders, so disable them
+            newCfgFile.write("# Auto-generated vector .cfg\n")
+            newCfgFile.write("# Place in /opt/retropie/configs/all/retroarch/config/{}/\n".format(coreName))
+            newCfgFile.write("video_shader_enable = \"false\"\n")
+        else:
             # Write the shader cfg file
             newCfgFile.write("# Auto-generated {} .cfg\n".format(shader))
             newCfgFile.write("# Game Title : {} , Width : {}, Height : {}, Aspect : {}:{}, Scale Factor : {}\n".format(gameName, gameWidth, gameHeight, int(gameInfo[5]), int(gameInfo[6]), scaleFactor))
