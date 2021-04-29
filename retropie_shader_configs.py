@@ -48,7 +48,7 @@ def generateConfigs(arg1, arg2, arg3, arg4):
         coreName = "FinalBurn Neo"
     elif "consoles" in arg1:
         fileName = "resolution_db/consoles.txt"
-        # Initialise coreName for consoles to allow log file creation
+        # Initialize coreName for consoles to allow log file creation
         coreName = "Consoles"
         console = True
 
@@ -64,8 +64,10 @@ def generateConfigs(arg1, arg2, arg3, arg4):
         curvature = False
         screenWidth = int(arg3)
         screenHeight = int(arg4)
+
         # Tolerance for "scale to fit" in either axis - the unit is the percentage of the game size in that direction. Default is 25 (i.e. 25%)
         tolerance = 25
+
         # Create output log file with detail info
         resolution = str(screenWidth) + "x" + str(screenHeight)
         outputLogFile = open(coreName + "_" + resolution + "_" + shaderName + ".csv", "w")
@@ -76,6 +78,7 @@ def generateConfigs(arg1, arg2, arg3, arg4):
     print("Opened database file {}".format(fileName))
     if not curvature:
         print("created log file ./{}".format(outputLogFile.name))
+
     # Progress indicator
     print("Creating system-specific config files.\n")
     sys.stdout.write('[')
@@ -83,8 +86,10 @@ def generateConfigs(arg1, arg2, arg3, arg4):
     gameCount = 0
 
     for gameInfo in resolutionDbFile:
+
         # Progress indicator
         gameCount = gameCount+1
+
         # strip line breaks
         gameInfo = gameInfo.rstrip()
 
@@ -115,6 +120,7 @@ def generateConfigs(arg1, arg2, arg3, arg4):
             sys.stdout.write('.')
             sys.stdout.flush()
 
+        # Determine shader to use for non-vector games
         if not "vector" in gameType:
             if "vertical" in gameOrientation:
                 if "crtpi" in shaderName:
@@ -127,7 +133,8 @@ def generateConfigs(arg1, arg2, arg3, arg4):
                         shader = "zfast_crt_curve_vertical.glslp"
                     else:
                         shader = "zfast_crt_standard_vertical.glslp"
-                # Calculate pixel 'squareness' and adjust gameHeight figure to keep the same aspect ratio, but with square pixels (keeping Width as-was to avoid scaling artifacts)
+                
+                # Calculate pixel 'squareness' and adjust gameHeight figure to keep the same aspect ratio, but with square pixels (keeping width as-was to avoid scaling artifacts)
                 pixelSquareness = ((gameWidth/gameHeight)/aspectRatio)
                 gameHeight = int(gameHeight * pixelSquareness)
 
@@ -142,7 +149,8 @@ def generateConfigs(arg1, arg2, arg3, arg4):
                         shader = "zfast_crt_curve.glslp"
                     else:
                         shader = "zfast_crt_standard.glslp"
-                # Calculate pixel 'squareness' and adjust gameWidth figure to keep the same aspect ratio, but with square pixels (keeping Height as-was)
+                
+                # Calculate pixel 'squareness' and adjust gameWidth figure to keep the same aspect ratio, but with square pixels (keeping height as-was)
                 pixelSquareness = ((gameWidth/gameHeight)/aspectRatio)
                 gameWidth = int(gameWidth / pixelSquareness)
 
@@ -157,7 +165,7 @@ def generateConfigs(arg1, arg2, arg3, arg4):
                 else:
                     scaleFactor = hScaling
 
-                # For vertical format games, width multiplies by an integer scale factor, height can multiply by the actual scale factor.
+                # For vertical format games, width multiplies by an integer scale factor, height can multiply by the actual scale factor
                 if "vertical" in gameOrientation:
                     # Pick whichever integer scale factor is nearest to the actual scale factor for the width without going outside the screen area
                     if (scaleFactor - int(scaleFactor) > 0.5 and gameWidth * int(scaleFactor + 1) < screenWidth):
@@ -169,7 +177,7 @@ def generateConfigs(arg1, arg2, arg3, arg4):
                     if screenHeight - viewportHeight < (gameHeight * (tolerance / 100)):
                         viewportHeight = screenHeight
 
-                # For horizontal games, scale both axes by the scaling factor.  If the resulting viewport size is within our tolerance for the game height or width, expand it to fill in that direction
+                # For horizontal games, scale both axes by the scaling factor. If the resulting viewport size is within our tolerance for the game height or width, expand it to fill in that direction
                 else:
                     viewportWidth = int(gameWidth * scaleFactor)
                     if screenWidth - viewportWidth < (gameWidth * (tolerance / 100)):
@@ -185,18 +193,19 @@ def generateConfigs(arg1, arg2, arg3, arg4):
                 viewportX = int((screenWidth - viewportWidth) / 2)
                 viewportY = int((screenHeight - viewportHeight) / 2)
 
-                outputLogFile.write("{},{},{},{},{},{},{},{},{},{},{}\n".format(gameInfo[0],gameInfo[1],gameInfo[2],gameInfo[4],gameInfo[5],gameInfo[6],viewportWidth,viewportHeight,viewportX,viewportY,scaleFactor))
+                outputLogFile.write("{},{},{},{},{},{},{},{},{},{},{}\n".format(gameInfo[0], gameInfo[1], gameInfo[2], gameInfo[4], gameInfo[5], gameInfo[6], viewportWidth, viewportHeight, viewportX, viewportY, scaleFactor))
 
         # create cfg file
         newCfgFile = open(path + "/" + cfgFileName, "w")
 
+        # Vector games shouldn't use shaders, so disable them
         if "vector" in gameType:
-            # Vector games shouldn't use shaders, so disable them
             newCfgFile.write("# Auto-generated vector .cfg\n")
             newCfgFile.write("# Place in /opt/retropie/configs/all/retroarch/config/{}/\n".format(coreName))
             newCfgFile.write("video_shader_enable = \"false\"\n")
+
+        # Write the shader cfg file for non-vector games
         else:
-            # Write the shader cfg file
             newCfgFile.write("# Auto-generated {} .cfg\n".format(shader))
             newCfgFile.write("# Game Title : {} , Width : {}, Height : {}, Aspect : {}:{}, Scale Factor : {}\n".format(gameName, gameWidth, gameHeight, int(gameInfo[5]), int(gameInfo[6]), scaleFactor))
             if not curvature:
@@ -218,11 +227,12 @@ def generateConfigs(arg1, arg2, arg3, arg4):
                     newCfgFile.write("video_shader_enable = \"false\"\n")
 
         newCfgFile.close()
-
     resolutionDbFile.close()
+
     # Progress indicator
     print("]\n")
     print("Done!\n")
+
     # Close output log file
     if not curvature:
         outputLogFile.close()
@@ -253,7 +263,7 @@ def createZip(shaderName="crtpi", curvature=False, screenWidth=0, screenHeight=0
     print("Creating zipfile {}".format(outputFileName))
     shutil.make_archive(outputFileName, "zip", path)
 
-    # now delete config dirs
+    # Now delete config dirs
     print("Deleting temp directory: {}".format(path))
     shutil.rmtree(path)
 
