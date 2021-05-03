@@ -89,9 +89,9 @@ def main():
     print("Opened database file {}".format(fileName))
     if not curvature:
         print("created log file ./{}".format(outputLogFile.name))
+    print("Creating system-specific config files.\n")
 
     # Progress indicator
-    print("Creating system-specific config files.\n")
     sys.stdout.write('[')
     sys.stdout.flush()
     gameCount = 0
