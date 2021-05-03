@@ -14,61 +14,72 @@
 
 
 from __future__ import division
+import argparse
 import sys
 import os
 import shutil
 
 
-def generateConfigs(arg1, arg2, arg3, arg4):
+def main():
+
+    parser = argparse.ArgumentParser(prog='retropie_shader_configs.py',usage='python %(prog)s core [options]',description='Create shaders for RetroPie Libretro cores', epilog='Example: python retropie_shader_configs.py mame2003 -s crtpi -c false -x 1920 -y 1080')
+    parser.add_argument('core', metavar='core', action='store', choices=['mame2000','mame2003','2003plus','mame2010','mame2015','mame2016','fbalpha','fbneo','consoles'], help='core name (mame2000|mame2003|2003plus|mame2010|mame2015|mame2016|fbalpha|fbneo|consoles)')
+    parser.add_argument('-s', metavar='shader', action='store', default='crtpi', choices=['crtpi','zfast'], help='shader (crtpi|zfast) default: crtpi')
+    parser.add_argument('-c', metavar='curvature', action='store', default='false', choices=['true','false'], help='curvature (true|false) default: false')
+    parser.add_argument('-x', metavar='screen width', action='store', default=1920, type=int, help='any width (unneeded/ignored if curvature is true) default: 1920')
+    parser.add_argument('-y', metavar='screen height', action='store', default=1080, type=int, help='any height (unneeded/ignored if curvature is true) default: 1080')
+
+    #args = parser.parse_args(args=None if sys.argv[1:] else ['--help'])
+    args = parser.parse_args()
 
     console = False
-    if "mame2000" in arg1:
+    if "mame2000" in args.core:
         fileName = "resolution_db/mame2000.txt"
         coreName = "MAME 2000"
-    if "mame2003" in arg1:
+    elif "mame2003" in args.core:
         fileName = "resolution_db/mame2003.txt"
         coreName = "MAME 2003 (0.78)"
-    elif "2003plus" in arg1:
+    elif "2003plus" in args.core:
         fileName = "resolution_db/mame2003-plus.txt"
         coreName = "MAME 2003-Plus"
-    elif "mame2010" in arg1:
+    elif "mame2010" in args.core:
         fileName = "resolution_db/mame2010.txt"
         coreName = "MAME 2010"
-    elif "mame2015" in arg1:
+    elif "mame2015" in args.core:
         fileName = "resolution_db/mame2015.txt"
         coreName = "MAME 2015"
-    elif "mame2016" in arg1:
+    elif "mame2016" in args.core:
         fileName = "resolution_db/mame2016.txt"
         coreName = "MAME 2016"
-    elif "fba2012" in arg1:
-        fileName = "resolution_db/fba2012.txt"
+    elif "fbalpha" in args.core:
+        fileName = "resolution_db/fbalpha.txt"
         coreName = "FB Alpha"
-    elif "fbneo" in arg1:
+    elif "fbneo" in args.core:
         fileName = "resolution_db/fbneo.txt"
         coreName = "FinalBurn Neo"
-    elif "consoles" in arg1:
+    elif "consoles" in args.core:
         fileName = "resolution_db/consoles.txt"
-        # Initialize coreName for consoles to allow log file creation
+        # Initialise coreName for consoles to allow log file creation
         coreName = "Consoles"
         console = True
 
-    if "crtpi" in arg2:
+    if "crtpi" in args.s:
         shaderName = "crtpi"
-    elif "zfast" in arg2:
+    else:
         shaderName = "zfast"
 
-    if "curvature" in arg3:
+    if "true" in args.c:
         curvature = True
         scaleFactor = "N/A"
     else:
         curvature = False
-        screenWidth = int(arg3)
-        screenHeight = int(arg4)
+        screenWidth = args.x
+        screenHeight = args.y
 
         # Tolerance for "scale to fit" in either axis - the unit is the percentage of the game size in that direction. Default is 25 (i.e. 25%)
         tolerance = 25
 
-        # Create output log file with detail info
+        # Create output log file in csv format with per game detail info
         resolution = str(screenWidth) + "x" + str(screenHeight)
         outputLogFile = open(coreName + "_" + resolution + "_" + shaderName + ".csv", "w")
         outputLogFile.write("Tolerance : ,{}\n".format(tolerance))
@@ -88,7 +99,7 @@ def generateConfigs(arg1, arg2, arg3, arg4):
     for gameInfo in resolutionDbFile:
 
         # Progress indicator
-        gameCount = gameCount+1
+        gameCount += 1
 
         # Strip line breaks
         gameInfo = gameInfo.rstrip()
@@ -206,8 +217,8 @@ def generateConfigs(arg1, arg2, arg3, arg4):
 
         # Write shader cfgs for non-vector games
         else:
-            newCfgFile.write("# Auto-generated {} .cfg\n".format(shader))
-            newCfgFile.write("# Game Title : {} , Width : {}, Height : {}, Aspect : {}:{}, Scale Factor : {}\n".format(gameName, gameWidth, gameHeight, int(gameInfo[5]), int(gameInfo[6]), scaleFactor))
+            newCfgFile.write("# Auto-generated {} shader cfg\n".format(shader))
+            newCfgFile.write("# Game Title : {}, Width : {}, Height : {}, Aspect : {}:{}, Scale Factor : {}\n".format(gameName, gameWidth, gameHeight, int(gameInfo[5]), int(gameInfo[6]), scaleFactor))
             if not curvature:
                 newCfgFile.write("# Screen Width : {}, Screen Height : {}\n".format(screenWidth, screenHeight))
             newCfgFile.write("# Place in /opt/retropie/configs/all/retroarch/config/{}/\n".format(coreName))
@@ -269,7 +280,4 @@ def createZip(shaderName="crtpi", curvature=False, screenWidth=0, screenHeight=0
 
 
 if __name__ == "__main__":
-    if "curvature" in sys.argv[3]:
-        generateConfigs(sys.argv[1], sys.argv[2], sys.argv[3], 0)
-    else:
-        generateConfigs(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4])
+    main()

@@ -1,60 +1,82 @@
 # RetroPie Shader Config Files
 
-This script creates cfg files for optimum shader appearence for use with RetroPie. Works with the following cores:
+This script creates cfg files for optimum shader appearence for use with RetroPie Libretro cores. Works with the following cores:
 
-  mame2000-libretro *(based on MAME 0.37b5)*<br>
-  mame2003-libretro *(based on MAME 0.78)*<br>
-  mame2003-plus-libretro *(based on MAME 0.78 + additions)*<br>
-  mame2010-libretro *(based on MAME 0.139)*<br>
-  mame2015-libretro *(based on MAME 0.160)*<br>
-  mame2016-libretro *(based on MAME 0.174)*<br>
-  fbalpha2012-libretro *(based on FB Alpha 0.2.97.30)*<br>
-  fbneo-libretro *(based on FinalBurn Neo current ver.)*<br>  
-  consoles *(currently only Nestopia/NES)*<br>
+  **mame2000-libretro** *(based on MAME 0.37b5)*<br>
+  **mame2003-libretro** *(based on MAME 0.78)*<br>
+  **mame2003-plus-libretro** *(based on MAME 0.78 + additions)*<br>
+  **mame2010-libretro** *(based on MAME 0.139)*<br>
+  **mame2015-libretro** *(based on MAME 0.160)*<br>
+  **mame2016-libretro** *(based on MAME 0.174)*<br>
+  **fbalpha2012** *(based on FB Alpha 0.2.97.30)*<br>
+  **fbneo** *(based on FinalBurn Neo)*<br>
+  **consoles** *(currently only Nestopia/NES)*<br>
 
 ### Usage:
 
-python retropie_shader_configs.py \<*core*\> \<*shader*\> \<*screen width*\> \<*screen height*\>
+python retropie_shader_configs.py \<*core*\> -s \<*shader*\> -c \<*curvature*\> -x \<*screen width*\> -y \<*screen height*\>
+
+or
+
+python retropie_shader_configs.py -h
 
 ## Parameters:
+  * \<*core*\>
+  * -s \<*shader*\>
+  * -c \<*curvature*\>
+  * -x \<*screen width*\>
+  * -y \<*screen height*\>
+  * -h (*show help information*)
 
-  * core (*mame2000*, *mame2003*, *2003plus*, etc.)
-  * shader (*crtpi* or *zfast*)
-  * screen width (i.e. *1920* or *curvature*)
-  * screen height (i.e. *1080* or *leave blank*)
+### Core (required):
+  Select core for shader.
+  * mame2000
+  * mame2003
+  * 2003plus
+  * mame2010
+  * mame2015
+  * mame2016
+  * fba2012
+  * fbneo
+  * consoles
 
-### Core:
-  * mame2000-libretro = *mame2000*
-  * mame2003-libretro = *mame2003*
-  * mame2003-plus-libretro = *2003plus*
-  * mame2010-libretro = *mame2010*
-  * mame2015-libretro = *mame2015*
-  * mame2016-libretro = *mame2016*
-  * fbalpha2012-libretro = *fba2012*
-  * FBNeo-libretro = *fbneo*
-  * Nestopia/NES = *consoles*
+### Shader (optional):
+  Select shader to apply.
+  * crtpi (*default*)
+  * zfast
 
-### Shader:
-  * *crtpi*
-  * *zfast*
+### Curvature (optional):
+  Use curvature shader (true) or standard shader (false).
+  * true
+  * false (*default*)
 
-### Screen Width:
-  * any width or *curvature*
+### Screen Width (optional):
+  Uneeded/ignored if curvature is true.
+  * any width (*default=1920*)
 
-### Screen Height:
-  * any height *or* leave blank (if using *curvature* in width)
+### Screen Height (optional):
+  Uneeded/ignored if curvature is true.
+  * any height (*default=1080*)
+
+### Help (optional):
+  Use seperately to show basic help information.
+  * -h
 
 ## Examples:
 
 Clone into a directory, navigate to that directory from a command prompt, and then run the script. Some examples are shown below:
 
-  ```python retropie_shader_configs.py mame2003 crtpi 1920 1080```  
+  ```python retropie_shader_configs.py mame2003 -s crtpi -x 1920 -y 1080```  
 
-  ```python retropie_shader_configs.py mame2003 crtpi curvature```  
+  ```python retropie_shader_configs.py mame2003 -s crtpi -c true```  
 
-  ```python retropie_shader_configs.py 2003plus zfast 1280 720```  
+  ```python retropie_shader_configs.py 2003plus -s zfast -x 1280 -y 720```  
 
-  ```python retropie_shader_configs.py 2003plus zfast curvature```  
+  ```python retropie_shader_configs.py 2003plus -s zfast -c true```  
+
+  ```python retropie_shader_configs.py fbneo -s crtpi -c false -x 1920 -y 1080```  
+
+  ```python retropie_shader_configs.py fbneo```  
 
 This will create a folder with the resolution, i.e., *1920x1080* (or *curvature*). Beneath that folder will be another subfolder with the core name, i.e., *MAME 2003 (0.78)*. The individual cfg files are stored in the core subfolder. When the script completes it will print the path where you should transfer the files within RetroPie.
 
@@ -83,7 +105,9 @@ Just a quick note on the *Type* field in the resolution databases.
 Vector games (i.e., ```asteroids``` or ```tempest```) are included in some of the database files but typically are not used in conjunction with shaders. The *Type* field is used to identify and disable them.
 
 ### Scale Factor:
-Inside the cfg files you'll find the calculated scale factor (nonapplicable for curvature shaders). Typically if the scale factor is less than 3 the shaders won't look very pleasant and are disabled in the cfg files. You're more than welcome to enable them for a particular game to decide for yourself. A few examples of this are ```rampage``` and ```popeye``` that both have scale factors below 3.
+Inside the cfg files you'll find the calculated scale factor (nonapplicable for curvature shaders). Typically if the scale factor is less than 3 the shaders won't look very pleasant and are disabled in the cfg files. See the .csv log file, located in the script folder, to see which games have a scale factor less than 3.
+
+You're more than welcome to enable them for a particular game to decide for yourself. A few examples of this are ```rampage``` and ```popeye``` that both have scale factors below 3.
 
 ## Miscellaneous:
 
