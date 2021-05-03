@@ -100,6 +100,9 @@ def main():
 
         # Progress indicator
         gameCount += 1
+        if (gameCount%100 == 0):
+            sys.stdout.write('.')
+            sys.stdout.flush()
 
         # Strip line breaks
         gameInfo = gameInfo.rstrip()
@@ -115,7 +118,6 @@ def main():
 
         if console:
             coreName = gameName
-
         cfgFileName = gameName + ".cfg"
 
         # Create directory for cfgs, if it doesn't already exist
@@ -125,11 +127,6 @@ def main():
             path = resolution + "/" + coreName + "/" + shaderName
         if not os.path.isdir(path):
             os.makedirs (path)
-
-        # Progress indicator
-        if (gameCount%100 == 0):
-            sys.stdout.write('.')
-            sys.stdout.flush()
 
         # Determine shader to use for non-vector games
         if not "vector" in gameType:
