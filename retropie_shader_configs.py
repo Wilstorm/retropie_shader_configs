@@ -22,12 +22,13 @@ import shutil
 
 def main():
 
-    parser = argparse.ArgumentParser(prog='retropie_shader_configs.py',usage='python %(prog)s core [options]',description='Create shaders for RetroPie Libretro cores', epilog='Example: python retropie_shader_configs.py mame2003 -s crtpi -c false -x 1920 -y 1080')
+    parser = argparse.ArgumentParser(prog='retropie_shader_configs.py',usage='python %(prog)s core [options]',description='Create shaders for RetroPie Libretro cores', epilog='Example: python retropie_shader_configs.py mame2003 -s crtpi -c false -x 1920 -y 1080 -o all')
     parser.add_argument('core', metavar='core', action='store', choices=['mame2000','mame2003','2003plus','mame2010','mame2015','mame2016','fbalpha','fbneo','consoles'], help='core name (mame2000|mame2003|2003plus|mame2010|mame2015|mame2016|fbalpha|fbneo|consoles)')
-    parser.add_argument('-s', metavar='shader', action='store', default='crtpi', choices=['crtpi','zfast'], help='shader (crtpi|zfast) default: crtpi')
-    parser.add_argument('-c', metavar='curvature', action='store', default='false', choices=['true','false'], help='curvature (true|false) default: false')
-    parser.add_argument('-x', metavar='screen width', action='store', default=1920, type=int, help='any width (unneeded/ignored if curvature is true) default: 1920')
-    parser.add_argument('-y', metavar='screen height', action='store', default=1080, type=int, help='any height (unneeded/ignored if curvature is true) default: 1080')
+    parser.add_argument('-s', metavar='shader', action='store', default='crtpi', choices=['crtpi','zfast'], help='select shader (crtpi|zfast) default: crtpi')
+    parser.add_argument('-c', metavar='curvature', action='store', default='false', choices=['true','false'], help='use curvature with shader (true|false) default: false')
+    parser.add_argument('-x', metavar='screen width', action='store', default=1920, type=int, help='any screen width (unneeded/ignored if curvature is true) default: 1920')
+    parser.add_argument('-y', metavar='screen height', action='store', default=1080, type=int, help='any screen height (unneeded/ignored if curvature is true) default: 1080')
+    parser.add_argument('-o', metavar='orientation', action='store', default='all', choices=['horizontal','vertical','all'], help='select game orientation--i.e., horizontal games only, vertical games only or all (horizontal|vertical|all) default: all')
 
     #args = parser.parse_args(args=None if sys.argv[1:] else ['--help'])
     args = parser.parse_args()
@@ -59,7 +60,7 @@ def main():
         coreName = "FinalBurn Neo"
     elif "consoles" in args.core:
         fileName = "resolution_db/consoles.txt"
-        # Initialise coreName for consoles to allow log file creation
+        # Initialize coreName for consoles to allow log file creation
         coreName = "Consoles"
         console = True
 
@@ -67,6 +68,15 @@ def main():
         shaderName = "crtpi"
     else:
         shaderName = "zfast"
+
+    # Initialize flags for selected game orientation
+    orientation = args.o
+    hFlag = True
+    vFlag = True
+    if "horizontal" in args.o:
+        vFlag = False
+    elif "vertical" in args.o:
+        hFlag = False
 
     if "true" in args.c:
         curvature = True
@@ -76,12 +86,12 @@ def main():
         screenWidth = args.x
         screenHeight = args.y
 
-        # Tolerance for "scale to fit" in either axis - the unit is the percentage of the game size in that direction. Default is 25 (i.e. 25%)
+        # Tolerance for "scale to fit" in either axis - the unit is the percentage of the game size in that direction. Default is 25 (i.e., 25%)
         tolerance = 25
 
         # Create output log file in csv format with per game detail info
         resolution = str(screenWidth) + "x" + str(screenHeight)
-        outputLogFile = open(coreName + "_" + resolution + "_" + shaderName + ".csv", "w")
+        outputLogFile = open(coreName + "_" + resolution + "_" + shaderName + "_" + orientation + ".csv", "w")
         outputLogFile.write("Tolerance : ,{}\n".format(tolerance))
         outputLogFile.write("ROM Name,X,Y,Orientation,Aspect1,Aspect2,ViewportWidth,ViewportHeight,HorizontalOffset,VerticalOffset,ScaleFactor\n")
 
@@ -120,121 +130,124 @@ def main():
             coreName = gameName
         cfgFileName = gameName + ".cfg"
 
-        # Create directory for cfgs, if it doesn't already exist
-        if curvature:
-            path = "curvature" + "/" + coreName + "/" + shaderName
-        else:
-            path = resolution + "/" + coreName + "/" + shaderName
-        if not os.path.isdir(path):
-            os.makedirs (path)
+        # Only generate cfgs for selected game orientation
+        if "horizontal" in gameOrientation and hFlag or "vertical" in gameOrientation and vFlag:
 
-        # Determine shader to use for non-vector games
-        if not "vector" in gameType:
-            if "vertical" in gameOrientation:
-                if "crtpi" in shaderName:
-                    if curvature:
-                        shader = "crt-pi-curvature-vertical.glslp"
-                    else:
-                        shader = "crt-pi-vertical.glslp"
-                elif "zfast" in shaderName:
-                    if curvature:
-                        shader = "zfast_crt_curve_vertical.glslp"
-                    else:
-                        shader = "zfast_crt_standard_vertical.glslp"
-                
-                # Calculate pixel 'squareness' and adjust gameHeight figure to keep the same aspect ratio, but with square pixels (keeping width as-was to avoid scaling artifacts)
-                pixelSquareness = ((gameWidth/gameHeight)/aspectRatio)
-                gameHeight = int(gameHeight * pixelSquareness)
+            # Create directory for cfgs, if it doesn't already exist
+            if curvature:
+                path = "curvature" + "/" + coreName + "/" + shaderName + "/" + orientation
+            else:
+                path = resolution + "/" + coreName + "/" + shaderName + "/" + orientation
+            if not os.path.isdir(path):
+                os.makedirs (path)
 
-            elif "horizontal" in gameOrientation:
-                if "crtpi" in shaderName:
-                    if curvature:
-                        shader = "crt-pi-curvature.glslp"
-                    else:
-                        shader = "crt-pi.glslp"
-                elif "zfast" in shaderName:
-                    if curvature:
-                        shader = "zfast_crt_curve.glslp"
-                    else:
-                        shader = "zfast_crt_standard.glslp"
-                
-                # Calculate pixel 'squareness' and adjust gameWidth figure to keep the same aspect ratio, but with square pixels (keeping height as-was)
-                pixelSquareness = ((gameWidth/gameHeight)/aspectRatio)
-                gameWidth = int(gameWidth / pixelSquareness)
-
-            if not curvature:
-                # Check scale factor in horizontal and vertical directions
-                vScaling = screenHeight/gameHeight
-                hScaling = screenWidth/gameWidth
-
-                # Keep whichever scaling factor is smaller
-                if vScaling < hScaling:
-                    scaleFactor = vScaling
-                else:
-                    scaleFactor = hScaling
-
-                # For vertical format games, width multiplies by an integer scale factor, height can multiply by the actual scale factor
+            # Determine shader to use for non-vector games
+            if not "vector" in gameType:
                 if "vertical" in gameOrientation:
-                    # Pick whichever integer scale factor is nearest to the actual scale factor for the width without going outside the screen area
-                    if (scaleFactor - int(scaleFactor) > 0.5 and gameWidth * int(scaleFactor + 1) < screenWidth):
-                        viewportWidth = gameWidth * int(scaleFactor + 1)
+                    if "crtpi" in shaderName:
+                        if curvature:
+                            shader = "crt-pi-curvature-vertical.glslp"
+                        else:
+                            shader = "crt-pi-vertical.glslp"
+                    elif "zfast" in shaderName:
+                        if curvature:
+                            shader = "zfast_crt_curve_vertical.glslp"
+                        else:
+                            shader = "zfast_crt_standard_vertical.glslp"
+                    
+                    # Calculate pixel 'squareness' and adjust gameHeight figure to keep the same aspect ratio, but with square pixels (keeping width as-was to avoid scaling artifacts)
+                    pixelSquareness = ((gameWidth/gameHeight)/aspectRatio)
+                    gameHeight = int(gameHeight * pixelSquareness)
+
+                elif "horizontal" in gameOrientation:
+                    if "crtpi" in shaderName:
+                        if curvature:
+                            shader = "crt-pi-curvature.glslp"
+                        else:
+                            shader = "crt-pi.glslp"
+                    elif "zfast" in shaderName:
+                        if curvature:
+                            shader = "zfast_crt_curve.glslp"
+                        else:
+                            shader = "zfast_crt_standard.glslp"
+                    
+                    # Calculate pixel 'squareness' and adjust gameWidth figure to keep the same aspect ratio, but with square pixels (keeping height as-was)
+                    pixelSquareness = ((gameWidth/gameHeight)/aspectRatio)
+                    gameWidth = int(gameWidth / pixelSquareness)
+
+                if not curvature:
+                    # Check scale factor in horizontal and vertical directions
+                    vScaling = screenHeight/gameHeight
+                    hScaling = screenWidth/gameWidth
+
+                    # Keep whichever scaling factor is smaller
+                    if vScaling < hScaling:
+                        scaleFactor = vScaling
                     else:
-                        viewportWidth = gameWidth * int(scaleFactor)
-                    viewportHeight = int(gameHeight * scaleFactor)
-                    # If, somehow, the viewport height is less than the screen height, but it's within tolerance of the game height, scale to fill the screen vertically 
-                    if screenHeight - viewportHeight < (gameHeight * (tolerance / 100)):
-                        viewportHeight = screenHeight
+                        scaleFactor = hScaling
 
-                # For horizontal games, scale both axes by the scaling factor. If the resulting viewport size is within our tolerance for the game height or width, expand it to fill in that direction
-                else:
-                    viewportWidth = int(gameWidth * scaleFactor)
-                    if screenWidth - viewportWidth < (gameWidth * (tolerance / 100)):
-                        viewportWidth = screenWidth
-                    viewportHeight = int(gameHeight * scaleFactor)
-                    if screenHeight - viewportHeight < (gameHeight * (tolerance / 100)):
-                        viewportHeight = screenHeight
-                    # Add 'overscan' area for Nestopia consoles, as per original script (more or less)
-                    if ("console" and "Nestopia" in coreName):
-                        viewportHeight = viewportHeight + 8 * int(scaleFactor)
+                    # For vertical format games, width multiplies by an integer scale factor, height can multiply by the actual scale factor
+                    if "vertical" in gameOrientation:
+                        # Pick whichever integer scale factor is nearest to the actual scale factor for the width without going outside the screen area
+                        if (scaleFactor - int(scaleFactor) > 0.5 and gameWidth * int(scaleFactor + 1) < screenWidth):
+                            viewportWidth = gameWidth * int(scaleFactor + 1)
+                        else:
+                            viewportWidth = gameWidth * int(scaleFactor)
+                        viewportHeight = int(gameHeight * scaleFactor)
+                        # If, somehow, the viewport height is less than the screen height, but it's within tolerance of the game height, scale to fill the screen vertically 
+                        if screenHeight - viewportHeight < (gameHeight * (tolerance / 100)):
+                            viewportHeight = screenHeight
 
-                # Center screen within target resolution
-                viewportX = int((screenWidth - viewportWidth) / 2)
-                viewportY = int((screenHeight - viewportHeight) / 2)
+                    # For horizontal games, scale both axes by the scaling factor. If the resulting viewport size is within our tolerance for the game height or width, expand it to fill in that direction
+                    else:
+                        viewportWidth = int(gameWidth * scaleFactor)
+                        if screenWidth - viewportWidth < (gameWidth * (tolerance / 100)):
+                            viewportWidth = screenWidth
+                        viewportHeight = int(gameHeight * scaleFactor)
+                        if screenHeight - viewportHeight < (gameHeight * (tolerance / 100)):
+                            viewportHeight = screenHeight
+                        # Add 'overscan' area for Nestopia consoles, as per original script (more or less)
+                        if ("console" and "Nestopia" in coreName):
+                            viewportHeight = viewportHeight + 8 * int(scaleFactor)
 
-                outputLogFile.write("{},{},{},{},{},{},{},{},{},{},{}\n".format(gameInfo[0], gameInfo[1], gameInfo[2], gameInfo[4], gameInfo[5], gameInfo[6], viewportWidth, viewportHeight, viewportX, viewportY, scaleFactor))
+                    # Center screen within target resolution
+                    viewportX = int((screenWidth - viewportWidth) / 2)
+                    viewportY = int((screenHeight - viewportHeight) / 2)
 
-        # Create cfg file
-        newCfgFile = open(path + "/" + cfgFileName, "w")
+                    outputLogFile.write("{},{},{},{},{},{},{},{},{},{},{}\n".format(gameInfo[0], gameInfo[1], gameInfo[2], gameInfo[4], gameInfo[5], gameInfo[6], viewportWidth, viewportHeight, viewportX, viewportY, scaleFactor))
 
-        # Vector games shouldn't use shaders; disable them
-        if "vector" in gameType:
-            newCfgFile.write("# Auto-generated vector .cfg\n")
-            newCfgFile.write("# Place in /opt/retropie/configs/all/retroarch/config/{}/\n".format(coreName))
-            newCfgFile.write("video_shader_enable = \"false\"\n")
+            # Create cfg file
+            newCfgFile = open(path + "/" + cfgFileName, "w")
 
-        # Write shader cfgs for non-vector games
-        else:
-            newCfgFile.write("# Auto-generated {} shader cfg\n".format(shader))
-            newCfgFile.write("# Game Title : {}, Width : {}, Height : {}, Aspect : {}:{}, Scale Factor : {}\n".format(gameName, gameWidth, gameHeight, int(gameInfo[5]), int(gameInfo[6]), scaleFactor))
-            if not curvature:
-                newCfgFile.write("# Screen Width : {}, Screen Height : {}\n".format(screenWidth, screenHeight))
-            newCfgFile.write("# Place in /opt/retropie/configs/all/retroarch/config/{}/\n".format(coreName))
-            newCfgFile.write("video_shader_enable = \"true\"\n")
-            newCfgFile.write("video_shader = \"/opt/retropie/configs/all/retroarch/shaders/{}\"\n".format(shader))
+            # Vector games shouldn't use shaders; disable them
+            if "vector" in gameType:
+                newCfgFile.write("# Auto-generated vector .cfg\n")
+                newCfgFile.write("# Place in /opt/retropie/configs/all/retroarch/config/{}/\n".format(coreName))
+                newCfgFile.write("video_shader_enable = \"false\"\n")
 
-            # Disable shader if the scale factor is less than 3
-            if not curvature:
-                if scaleFactor >= 3:
-                    newCfgFile.write("aspect_ratio_index = \"23\"\n")
-                    newCfgFile.write("custom_viewport_width = \"{}\"\n".format(viewportWidth))
-                    newCfgFile.write("custom_viewport_height = \"{}\"\n".format(viewportHeight))
-                    newCfgFile.write("custom_viewport_x = \"{}\"\n".format(viewportX))
-                    newCfgFile.write("custom_viewport_y = \"{}\"\n".format(viewportY))
-                else:
-                    newCfgFile.write("# Insufficient resolution for good quality shader\n")
-                    newCfgFile.write("video_shader_enable = \"false\"\n")
+            # Write shader cfgs for non-vector games
+            else:
+                newCfgFile.write("# Auto-generated {} shader cfg\n".format(shader))
+                newCfgFile.write("# Game Title : {}, Width : {}, Height : {}, Aspect : {}:{}, Scale Factor : {}\n".format(gameName, gameWidth, gameHeight, int(gameInfo[5]), int(gameInfo[6]), scaleFactor))
+                if not curvature:
+                    newCfgFile.write("# Screen Width : {}, Screen Height : {}\n".format(screenWidth, screenHeight))
+                newCfgFile.write("# Place in /opt/retropie/configs/all/retroarch/config/{}/\n".format(coreName))
+                newCfgFile.write("video_shader_enable = \"true\"\n")
+                newCfgFile.write("video_shader = \"/opt/retropie/configs/all/retroarch/shaders/{}\"\n".format(shader))
 
-        newCfgFile.close()
+                # Disable shader if the scale factor is less than 3
+                if not curvature:
+                    if scaleFactor >= 3:
+                        newCfgFile.write("aspect_ratio_index = \"23\"\n")
+                        newCfgFile.write("custom_viewport_width = \"{}\"\n".format(viewportWidth))
+                        newCfgFile.write("custom_viewport_height = \"{}\"\n".format(viewportHeight))
+                        newCfgFile.write("custom_viewport_x = \"{}\"\n".format(viewportX))
+                        newCfgFile.write("custom_viewport_y = \"{}\"\n".format(viewportY))
+                    else:
+                        newCfgFile.write("# Insufficient resolution for good quality shader\n")
+                        newCfgFile.write("video_shader_enable = \"false\"\n")
+
+            newCfgFile.close()
     resolutionDbFile.close()
 
     # Progress indicator

@@ -14,7 +14,7 @@ This script creates cfg files for optimum shader appearence for use with RetroPi
 
 ### Usage:
 
-python retropie_shader_configs.py \<*core*\> -s \<*shader*\> -c \<*curvature*\> -x \<*screen width*\> -y \<*screen height*\>
+python retropie_shader_configs.py \<*core*\> -s \<*shader*\> -c \<*curvature*\> -x \<*screen width*\> -y \<*screen height*\> -o \<*orientation*\>
 
 or
 
@@ -26,6 +26,7 @@ python retropie_shader_configs.py -h
   * -c \<*curvature*\>
   * -x \<*screen width*\>
   * -y \<*screen height*\>
+  * -o \<*orientation*\>
   * -h (*show help information*)
 
 ### Core (required):
@@ -58,6 +59,12 @@ python retropie_shader_configs.py -h
   Uneeded/ignored if curvature is true.
   * any height (*default=1080*)
 
+### Orientation (optional):
+  Select game orientation--i.e., horizontal games only, vertical games only or all games
+  * horizontal
+  * vertical
+  * all (*default*)
+
 ### Help (optional):
   Use seperately to show basic help information.
   * -h
@@ -68,13 +75,13 @@ Clone into a directory, navigate to that directory from a command prompt, and th
 
   ```python retropie_shader_configs.py mame2003 -s crtpi -x 1920 -y 1080```  
 
-  ```python retropie_shader_configs.py mame2003 -s crtpi -c true```  
+  ```python retropie_shader_configs.py mame2003 -s crtpi -c true -o horizontal```  
 
-  ```python retropie_shader_configs.py 2003plus -s zfast -x 1280 -y 720```  
+  ```python retropie_shader_configs.py 2003plus -s zfast -x 1280 -y 720 -o vertical```  
 
   ```python retropie_shader_configs.py 2003plus -s zfast -c true```  
 
-  ```python retropie_shader_configs.py fbneo -s crtpi -c false -x 1920 -y 1080```  
+  ```python retropie_shader_configs.py fbneo -s crtpi -c false -x 1920 -y 1080 -o all```  
 
   ```python retropie_shader_configs.py fbneo```  
 
