@@ -64,36 +64,39 @@ def main():
         coreName = "Consoles"
         console = True
 
-    if "crtpi" in args.s:
-        shaderName = "crtpi"
-    else:
-        shaderName = "zfast"
+    shaderName = args.s
+    orientation = args.o
 
     # Initialize flags for selected game orientation
-    orientation = args.o
     hFlag = True
     vFlag = True
-    if "horizontal" in args.o:
+    if "horizontal" in orientation:
         vFlag = False
-    elif "vertical" in args.o:
+    elif "vertical" in orientation:
         hFlag = False
 
     if "true" in args.c:
         curvature = True
         scaleFactor = "N/A"
+        resolution = "curvature"
     else:
         curvature = False
         screenWidth = args.x
         screenHeight = args.y
+        resolution = str(screenWidth) + "x" + str(screenHeight)
 
         # Tolerance for "scale to fit" in either axis - the unit is the percentage of the game size in that direction. Default is 25 (i.e., 25%)
         tolerance = 25
 
         # Create output log file in csv format with per game detail info
-        resolution = str(screenWidth) + "x" + str(screenHeight)
         outputLogFile = open(coreName + "_" + resolution + "_" + shaderName + "_" + orientation + ".csv", "w")
         outputLogFile.write("Tolerance : ,{}\n".format(tolerance))
         outputLogFile.write("ROM Name,X,Y,Orientation,Aspect1,Aspect2,ViewportWidth,ViewportHeight,HorizontalOffset,VerticalOffset,ScaleFactor\n")
+
+    # Create directory for cfgs, if it doesn't already exist
+    path = resolution + "/" + coreName + "/" + shaderName + "/" + orientation
+    if not os.path.isdir(path):
+        os.makedirs (path)
 
     resolutionDbFile = open(fileName, "r" )
     print("Opened database file {}".format(fileName))
@@ -132,14 +135,6 @@ def main():
 
         # Only generate cfgs for selected game orientation
         if "horizontal" in gameOrientation and hFlag or "vertical" in gameOrientation and vFlag:
-
-            # Create directory for cfgs, if it doesn't already exist
-            if curvature:
-                path = "curvature" + "/" + coreName + "/" + shaderName + "/" + orientation
-            else:
-                path = resolution + "/" + coreName + "/" + shaderName + "/" + orientation
-            if not os.path.isdir(path):
-                os.makedirs (path)
 
             # Determine shader to use for non-vector games
             if not "vector" in gameType:
@@ -214,7 +209,9 @@ def main():
                     viewportX = int((screenWidth - viewportWidth) / 2)
                     viewportY = int((screenHeight - viewportHeight) / 2)
 
-                    outputLogFile.write("{},{},{},{},{},{},{},{},{},{},{}\n".format(gameInfo[0], gameInfo[1], gameInfo[2], gameInfo[4], gameInfo[5], gameInfo[6], viewportWidth, viewportHeight, viewportX, viewportY, scaleFactor))
+                    outputLogFile.write("{},{},{},{},{},{},{},{},{},{},{:0.2f}\n".format(gameInfo[0], gameInfo[1], gameInfo[2], gameInfo[4], gameInfo[5], gameInfo[6], viewportWidth, viewportHeight, viewportX, viewportY, scaleFactor))
+                    # Convert float to string and round to hundredths
+                    scaleFactor = str(round(scaleFactor, 2))
 
             # Create cfg file
             newCfgFile = open(path + "/" + cfgFileName, "w")
@@ -237,7 +234,8 @@ def main():
 
                 # Disable shader if the scale factor is less than 3
                 if not curvature:
-                    if scaleFactor >= 3:
+                    # Convert string to float for equation
+                    if float(scaleFactor) >= 3:
                         newCfgFile.write("aspect_ratio_index = \"23\"\n")
                         newCfgFile.write("custom_viewport_width = \"{}\"\n".format(viewportWidth))
                         newCfgFile.write("custom_viewport_height = \"{}\"\n".format(viewportHeight))
