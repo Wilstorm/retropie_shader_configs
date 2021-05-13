@@ -209,9 +209,10 @@ def main():
                     viewportX = int((screenWidth - viewportWidth) / 2)
                     viewportY = int((screenHeight - viewportHeight) / 2)
 
-                    outputLogFile.write("{},{},{},{},{},{},{},{},{},{},{:0.2f}\n".format(gameInfo[0], gameInfo[1], gameInfo[2], gameInfo[4], gameInfo[5], gameInfo[6], viewportWidth, viewportHeight, viewportX, viewportY, scaleFactor))
-                    # Convert float to string and round to hundredths
-                    scaleFactor = str(round(scaleFactor, 2))
+                    outputLogFile.write("{},{},{},{},{},{},{},{},{},{},{}\n".format(gameInfo[0], gameInfo[1], gameInfo[2], gameInfo[4], gameInfo[5], gameInfo[6], viewportWidth, viewportHeight, viewportX, viewportY, scaleFactor))
+
+                    # Round to hundredths before writing shader cfgs below (or conflicts with curvature "N/A")
+                    scaleFactor = round(scaleFactor, 2)
 
             # Create cfg file
             newCfgFile = open(path + "/" + cfgFileName, "w")
@@ -235,7 +236,7 @@ def main():
                 # Disable shader if the scale factor is less than 3
                 if not curvature:
                     # Convert string to float for equation
-                    if float(scaleFactor) >= 3:
+                    if scaleFactor >= 3:
                         newCfgFile.write("aspect_ratio_index = \"23\"\n")
                         newCfgFile.write("custom_viewport_width = \"{}\"\n".format(viewportWidth))
                         newCfgFile.write("custom_viewport_height = \"{}\"\n".format(viewportHeight))
