@@ -269,19 +269,19 @@ def shader_to_apply(gameOrientation, shaderName, curvature):
 def createZip(shaderName="crtpi", curvature=False, screenWidth=0, screenHeight=0):
     if "crtpi" in shaderName:
         if curvature:
-            outputFileName = "crt-pi_configs_curvature"
+            outputFileName = "curvature_crt-pi_configs"
             path = "curvature"
         else:
             resolution = str(screenWidth) + "x" + str(screenHeight)
-            outputFileName = "crt-pi_configs_" + resolution
+            outputFileName = resolution + "_crt-pi_configs"
             path = resolution
     elif "zfast" in shaderName:
         if curvature:
-            outputFileName = "zfast_configs_curvature"
+            outputFileName = "curvature_zfast_configs"
             path = "curvature"
         else:
             resolution = str(screenWidth) + "x" + str(screenHeight)
-            outputFileName = "zfast_configs_" + resolution
+            outputFileName = resolution + "_zfast_configs"
             path = resolution        
     outputFileName = outputFileName.replace(" ", "")
     outputFileName = outputFileName.lower()
