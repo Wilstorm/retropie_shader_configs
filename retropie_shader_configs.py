@@ -135,10 +135,10 @@ def main():
 
         # Only generate cfgs for selected game orientation
         if "horizontal" in gameOrientation and hFlag or "vertical" in gameOrientation and vFlag:
-
-            # Determine shader to use for non-vector games
             if not "vector" in gameType:
-                shader = determine_shader_to_apply(gameOrientation, shaderName, curvature)
+
+                # Determine shader to use for non-vector games
+                shader = shader_to_apply(gameOrientation, shaderName, curvature)
 
                 if "vertical" in gameOrientation:
                     # Calculate pixel 'squareness' and adjust gameHeight figure to keep the same aspect ratio, but with square pixels (keeping width as-was to avoid scaling artifacts)
@@ -240,7 +240,7 @@ def main():
     print("Files written to ./{}/\nPlease transfer files to /opt/retropie/configs/all/retroarch/config/{}/\n".format(path, coreName))
 
 
-def determine_shader_to_apply(gameOrientation, shaderName, curvature):
+def shader_to_apply(gameOrientation, shaderName, curvature):
     if "vertical" in gameOrientation:
         if "crtpi" in shaderName:
             if curvature:
