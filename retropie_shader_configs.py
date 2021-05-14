@@ -138,34 +138,14 @@ def main():
 
             # Determine shader to use for non-vector games
             if not "vector" in gameType:
+                shader = determine_shader_to_apply(gameOrientation, shaderName, curvature)
+
                 if "vertical" in gameOrientation:
-                    if "crtpi" in shaderName:
-                        if curvature:
-                            shader = "crt-pi-curvature-vertical.glslp"
-                        else:
-                            shader = "crt-pi-vertical.glslp"
-                    elif "zfast" in shaderName:
-                        if curvature:
-                            shader = "zfast_crt_curve_vertical.glslp"
-                        else:
-                            shader = "zfast_crt_standard_vertical.glslp"
-                    
                     # Calculate pixel 'squareness' and adjust gameHeight figure to keep the same aspect ratio, but with square pixels (keeping width as-was to avoid scaling artifacts)
                     pixelSquareness = ((gameWidth/gameHeight)/aspectRatio)
                     gameHeight = int(gameHeight * pixelSquareness)
 
                 elif "horizontal" in gameOrientation:
-                    if "crtpi" in shaderName:
-                        if curvature:
-                            shader = "crt-pi-curvature.glslp"
-                        else:
-                            shader = "crt-pi.glslp"
-                    elif "zfast" in shaderName:
-                        if curvature:
-                            shader = "zfast_crt_curve.glslp"
-                        else:
-                            shader = "zfast_crt_standard.glslp"
-                    
                     # Calculate pixel 'squareness' and adjust gameWidth figure to keep the same aspect ratio, but with square pixels (keeping height as-was)
                     pixelSquareness = ((gameWidth/gameHeight)/aspectRatio)
                     gameWidth = int(gameWidth / pixelSquareness)
@@ -258,6 +238,32 @@ def main():
         outputLogFile.close()
         print("Log written to ./{}  <--Delete if not needed".format(outputLogFile.name))
     print("Files written to ./{}/\nPlease transfer files to /opt/retropie/configs/all/retroarch/config/{}/\n".format(path, coreName))
+
+
+def determine_shader_to_apply(gameOrientation, shaderName, curvature):
+    if "vertical" in gameOrientation:
+        if "crtpi" in shaderName:
+            if curvature:
+                shader = "crt-pi-curvature-vertical.glslp"
+            else:
+                shader = "crt-pi-vertical.glslp"
+        elif "zfast" in shaderName:
+            if curvature:
+                shader = "zfast_crt_curve_vertical.glslp"
+            else:
+                shader = "zfast_crt_standard_vertical.glslp"
+    elif "horizontal" in gameOrientation:
+        if "crtpi" in shaderName:
+            if curvature:
+                shader = "crt-pi-curvature.glslp"
+            else:
+                shader = "crt-pi.glslp"
+        elif "zfast" in shaderName:
+            if curvature:
+                shader = "zfast_crt_curve.glslp"
+            else:
+                shader = "zfast_crt_standard.glslp"
+    return shader
 
 
 def createZip(shaderName="crtpi", curvature=False, screenWidth=0, screenHeight=0):
