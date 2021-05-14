@@ -85,7 +85,7 @@ Clone into a directory, navigate to that directory from a command prompt, and th
 
   ```python retropie_shader_configs.py fbneo```  
 
-This will create a folder with the resolution, i.e., *1920x1080* (or *curvature*). Beneath that folder will be another subfolder with the core name, i.e., *MAME 2003 (0.78)*. The individual cfg files are stored in the core subfolder. When the script completes it will print the path where you should transfer the files within RetroPie.
+This will create a folder with the resolution, i.e., *1920x1080* (or *curvature*). Within that folder will be a subfolder with the core name, i.e., *MAME 2003 (0.78)*. Within the core subfolder there will be one of three folders named all, horizontal or vertical where the individual cfgs will be saved. When the script completes it will print the path where you should transfer the files within RetroPie.
 
 There's also a bat file (retropie_shader_configs.bat) you may use to generate the cfg files. It will generate the cfg and zip files containing the same information in the root. You may modify the bat file to fit you needs for different cores, shaders and resolutions. Take a look at the bat file for examples, it's fairly self-explanatory.
 
