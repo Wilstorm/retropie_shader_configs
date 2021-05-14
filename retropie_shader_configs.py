@@ -89,7 +89,7 @@ def main():
         tolerance = 25
 
         # Create output log file in csv format with per game detail info
-        outputLogFile = open(coreName + "_" + resolution + "_" + shaderName + "_" + orientation + ".csv", "w")
+        outputLogFile = open(resolution + "_" + coreName + "_" + shaderName + "_" + orientation + ".csv", "w")
         outputLogFile.write("Tolerance : ,{}\n".format(tolerance))
         outputLogFile.write("ROM Name,X,Y,Orientation,Aspect1,Aspect2,ViewportWidth,ViewportHeight,HorizontalOffset,VerticalOffset,ScaleFactor\n")
 
