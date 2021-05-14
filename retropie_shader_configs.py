@@ -23,7 +23,7 @@ import shutil
 def main():
 
     parser = argparse.ArgumentParser(prog='retropie_shader_configs.py',usage='python %(prog)s core [options]',description='Create shaders for RetroPie Libretro cores', epilog='Example: python retropie_shader_configs.py mame2003 -s crtpi -c false -x 1920 -y 1080 -o all')
-    parser.add_argument('core', metavar='core', action='store', choices=['mame2000','mame2003','2003plus','mame2010','mame2015','mame2016','fbalpha','fbneo','consoles'], help='core name (mame2000|mame2003|2003plus|mame2010|mame2015|mame2016|fbalpha|fbneo|consoles)')
+    parser.add_argument('core', metavar='core', action='store', choices=['mame2000','mame2003','2003plus','mame2010','mame2015','mame2016','fba2012','fbneo','consoles'], help='core name (mame2000|mame2003|2003plus|mame2010|mame2015|mame2016|fba2012|fbneo|consoles)')
     parser.add_argument('-s', metavar='shader', action='store', default='crtpi', choices=['crtpi','zfast'], help='select shader (crtpi|zfast) default: crtpi')
     parser.add_argument('-c', metavar='curvature', action='store', default='false', choices=['true','false'], help='use curvature with shader (true|false) default: false')
     parser.add_argument('-x', metavar='screen width', action='store', default=1920, type=int, help='any screen width (unneeded/ignored if curvature is true) default: 1920')
