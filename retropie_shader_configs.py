@@ -140,15 +140,12 @@ def main():
                 # Determine shader to use for non-vector games
                 shaderName = shader(curvature, shaderType, gameOrientation)
 
-                if "vertical" in gameOrientation:
+                if "horizontal" in gameOrientation:
+                    # Calculate pixel 'squareness' and adjust gameWidth figure to keep the same aspect ratio, but with square pixels (keeping height as-was)        
+                    gameWidth = pixel_squareness(gameWidth, gameHeight, aspectRatio, gameOrientation)
+                elif "vertical" in gameOrientation:
                     # Calculate pixel 'squareness' and adjust gameHeight figure to keep the same aspect ratio, but with square pixels (keeping width as-was to avoid scaling artifacts)
-                    pixelSquareness = ((gameWidth/gameHeight)/aspectRatio)
-                    gameHeight = int(gameHeight * pixelSquareness)
-
-                elif "horizontal" in gameOrientation:
-                    # Calculate pixel 'squareness' and adjust gameWidth figure to keep the same aspect ratio, but with square pixels (keeping height as-was)
-                    pixelSquareness = ((gameWidth/gameHeight)/aspectRatio)
-                    gameWidth = int(gameWidth / pixelSquareness)
+                    gameHeight = pixel_squareness(gameWidth, gameHeight, aspectRatio, gameOrientation)
 
                 if not curvature:
                     # Check scale factor in horizontal and vertical directions
@@ -264,6 +261,15 @@ def shader(curvature, shaderType, gameOrientation):
             else:
                 shaderName = "zfast_crt_standard.glslp"
     return shaderName
+
+
+def pixel_squareness(gameWidth, gameHeight, aspectRatio, gameOrientation):
+    pixelSquareness = ((gameWidth / gameHeight) / aspectRatio)
+    if "horizontal" in gameOrientation:
+        psTemp = int(gameWidth / pixelSquareness)
+    else:
+        psTemp = int(gameHeight * pixelSquareness)
+    return psTemp
 
 
 def createZip(shaderType="crtpi", curvature=False, screenWidth=0, screenHeight=0):
