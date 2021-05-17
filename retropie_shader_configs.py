@@ -64,7 +64,7 @@ def main():
         coreName = "Consoles"
         console = True
 
-    shaderType = args.s
+    shaderName = args.s
     orientation = args.o
 
     # Initialize flags for selected game orientation
@@ -89,12 +89,12 @@ def main():
         tolerance = 25
 
         # Create output log file in csv format with per game detail info
-        outputLogFile = open(resolution + "_" + coreName.lower() + "_" + shaderType + "_" + orientation + ".csv", "w")
+        outputLogFile = open(resolution + "_" + coreName.lower() + "_" + shaderName + "_" + orientation + ".csv", "w")
         outputLogFile.write("Tolerance : ,{}\n".format(tolerance))
         outputLogFile.write("ROM Name,X,Y,Orientation,Aspect1,Aspect2,ViewportWidth,ViewportHeight,HorizontalOffset,VerticalOffset,ScaleFactor\n")
 
     # Create directory for cfgs, if it doesn't already exist
-    path = resolution + "/" + coreName.lower() + "/" + shaderType + "/" + orientation
+    path = resolution + "/" + coreName.lower() + "/" + shaderName + "/" + orientation
     if not os.path.isdir(path):
         os.makedirs (path)
 
@@ -133,21 +133,23 @@ def main():
             coreName = gameName
         cfgFileName = gameName + ".cfg"
 
-        # Only generate cfgs for selected game orientation
+        # Generate cfgs for selected game orientation only
         if "horizontal" in gameOrientation and hFlag or "vertical" in gameOrientation and vFlag:
+
+            # Determine shader type for all non-vector games
             if not "vector" in gameType:
+                shaderType = shader(curvature, shaderName, gameOrientation)
 
-                # Determine shader to use for non-vector games
-                shaderName = shader(curvature, shaderType, gameOrientation)
-
-                if "horizontal" in gameOrientation:
-                    # Calculate pixel 'squareness' and adjust gameWidth figure to keep the same aspect ratio, but with square pixels (keeping height as-was)        
-                    gameWidth = pixel_squareness(gameWidth, gameHeight, aspectRatio, gameOrientation)
-                elif "vertical" in gameOrientation:
-                    # Calculate pixel 'squareness' and adjust gameHeight figure to keep the same aspect ratio, but with square pixels (keeping width as-was to avoid scaling artifacts)
-                    gameHeight = pixel_squareness(gameWidth, gameHeight, aspectRatio, gameOrientation)
-
+                # Perform calculations for non-curvature games only
                 if not curvature:
+                    if "horizontal" in gameOrientation:
+                        # Calculate pixel 'squareness' and adjust gameWidth figure to keep the same aspect ratio, but with square pixels (keeping height as-was)        
+                        gameWidth = pixel_squareness(gameWidth, gameHeight, aspectRatio, gameOrientation)
+
+                    elif "vertical" in gameOrientation:
+                        # Calculate pixel 'squareness' and adjust gameHeight figure to keep the same aspect ratio, but with square pixels (keeping width as-was to avoid scaling artifacts)
+                        gameHeight = pixel_squareness(gameWidth, gameHeight, aspectRatio, gameOrientation)
+
                     # Check scale factor in horizontal and vertical directions; keep whichever scaling factor is smaller
                     scaleFactor = scale_factor(gameWidth, screenWidth, gameHeight, screenHeight)
 
@@ -193,19 +195,18 @@ def main():
                 newCfgFile.write("# Place in /opt/retropie/configs/all/retroarch/config/{}/\n".format(coreName))
                 newCfgFile.write("video_shader_enable = \"false\"\n")
 
-            # Write shader cfgs for non-vector games
+            # Write shader cfgs for all non-vector games
             else:
-                newCfgFile.write("# Auto-generated {} shader cfg\n".format(shader))
+                newCfgFile.write("# Auto-generated {} shader configuration file\n".format(shaderName))
                 newCfgFile.write("# Game Title : {}, Width : {}, Height : {}, Aspect : {}:{}, Scale Factor : {}\n".format(gameName, gameWidth, gameHeight, int(gameInfo[5]), int(gameInfo[6]), scaleFactor))
                 if not curvature:
                     newCfgFile.write("# Screen Width : {}, Screen Height : {}\n".format(screenWidth, screenHeight))
                 newCfgFile.write("# Place in /opt/retropie/configs/all/retroarch/config/{}/\n".format(coreName))
                 newCfgFile.write("video_shader_enable = \"true\"\n")
-                newCfgFile.write("video_shader = \"/opt/retropie/configs/all/retroarch/shaders/{}\"\n".format(shaderName))
+                newCfgFile.write("video_shader = \"/opt/retropie/configs/all/retroarch/shaders/{}\"\n".format(shaderType))
 
                 # Disable shader if the scale factor is less than 3
                 if not curvature:
-                    # Convert string to float for equation
                     if scaleFactor >= 3:
                         newCfgFile.write("aspect_ratio_index = \"23\"\n")
                         newCfgFile.write("custom_viewport_width = \"{}\"\n".format(viewportWidth))
@@ -230,30 +231,30 @@ def main():
     print("Files written to ./{}/\nPlease transfer files to /opt/retropie/configs/all/retroarch/config/{}/\n".format(path, coreName))
 
 
-def shader(curvature, shaderType, gameOrientation):
+def shader(curvature, shaderName, gameOrientation):
     if "vertical" in gameOrientation:
-        if "crtpi" in shaderType:
+        if "crtpi" in shaderName:
             if curvature:
-                shaderName = "crt-pi-curvature-vertical.glslp"
+                shaderType = "crt-pi-curvature-vertical.glslp"
             else:
-                shaderName = "crt-pi-vertical.glslp"
-        elif "zfast" in shaderType:
+                shaderType = "crt-pi-vertical.glslp"
+        elif "zfast" in shaderName:
             if curvature:
-                shaderName = "zfast_crt_curve_vertical.glslp"
+                shaderType = "zfast_crt_curve_vertical.glslp"
             else:
-                shaderName = "zfast_crt_standard_vertical.glslp"
+                shaderType = "zfast_crt_standard_vertical.glslp"
     elif "horizontal" in gameOrientation:
-        if "crtpi" in shaderType:
+        if "crtpi" in shaderName:
             if curvature:
-                shaderName = "crt-pi-curvature.glslp"
+                shaderType = "crt-pi-curvature.glslp"
             else:
-                shaderName = "crt-pi.glslp"
-        elif "zfast" in shaderNameType:
+                shaderType = "crt-pi.glslp"
+        elif "zfast" in shaderName:
             if curvature:
-                shaderName = "zfast_crt_curve.glslp"
+                shaderType = "zfast_crt_curve.glslp"
             else:
-                shaderName = "zfast_crt_standard.glslp"
-    return shaderName
+                shaderType = "zfast_crt_standard.glslp"
+    return shaderType
 
 
 def pixel_squareness(gameWidth, gameHeight, aspectRatio, gameOrientation):
@@ -275,8 +276,8 @@ def scale_factor(gameWidth, screenWidth, gameHeight, screenHeight):
     return scaleFactor
 
 
-def createZip(shaderType="crtpi", curvature=False, screenWidth=0, screenHeight=0):
-    if "crtpi" in shaderType:
+def createZip(shaderName="crtpi", curvature=False, screenWidth=0, screenHeight=0):
+    if "crtpi" in shaderName:
         if curvature:
             outputFileName = "curvature_crt-pi_configs"
             path = "curvature"
@@ -284,7 +285,7 @@ def createZip(shaderType="crtpi", curvature=False, screenWidth=0, screenHeight=0
             resolution = str(screenWidth) + "x" + str(screenHeight)
             outputFileName = resolution + "_crt-pi_configs"
             path = resolution
-    elif "zfast" in shaderType:
+    elif "zfast" in shaderName:
         if curvature:
             outputFileName = "curvature_zfast_configs"
             path = "curvature"
