@@ -148,15 +148,8 @@ def main():
                     gameHeight = pixel_squareness(gameWidth, gameHeight, aspectRatio, gameOrientation)
 
                 if not curvature:
-                    # Check scale factor in horizontal and vertical directions
-                    vScaling = screenHeight/gameHeight
-                    hScaling = screenWidth/gameWidth
-
-                    # Keep whichever scaling factor is smaller
-                    if vScaling < hScaling:
-                        scaleFactor = vScaling
-                    else:
-                        scaleFactor = hScaling
+                    # Check scale factor in horizontal and vertical directions; keep whichever scaling factor is smaller
+                    scaleFactor = scale_factor(gameWidth, screenWidth, gameHeight, screenHeight)
 
                     # For vertical format games, width multiplies by an integer scale factor, height can multiply by the actual scale factor
                     if "vertical" in gameOrientation:
@@ -270,6 +263,16 @@ def pixel_squareness(gameWidth, gameHeight, aspectRatio, gameOrientation):
     else:
         psTemp = int(gameHeight * pixelSquareness)
     return psTemp
+
+
+def scale_factor(gameWidth, screenWidth, gameHeight, screenHeight):
+    hScaling = screenWidth / gameWidth
+    vScaling = screenHeight / gameHeight
+    if hScaling < vScaling:
+        scaleFactor = hScaling
+    else:
+        scaleFactor = vScaling
+    return scaleFactor
 
 
 def createZip(shaderType="crtpi", curvature=False, screenWidth=0, screenHeight=0):
