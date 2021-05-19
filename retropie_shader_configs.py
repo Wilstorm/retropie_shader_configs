@@ -64,6 +64,7 @@ def main():
         coreName = "Consoles"
         console = True
 
+    coreDir = args.core
     shaderName = args.s
     orientation = args.o
 
@@ -89,12 +90,12 @@ def main():
         tolerance = 25
 
         # Create output log file in csv format with per game detail info
-        outputLogFile = open(resolution + "_" + coreName.lower() + "_" + shaderName + "_" + orientation + ".csv", "w")
+        outputLogFile = open(coreDir + "_" + resolution + "_" + shaderName + "_" + orientation + ".csv", "w")
         outputLogFile.write("Tolerance : ,{}\n".format(tolerance))
         outputLogFile.write("ROM Name,X,Y,Orientation,Aspect1,Aspect2,ViewportWidth,ViewportHeight,HorizontalOffset,VerticalOffset,ScaleFactor\n")
 
     # Create directory for cfgs, if it doesn't already exist
-    path = resolution + "/" + coreName.lower() + "/" + shaderName + "/" + orientation
+    path = coreDir + "/" + resolution + "/" + shaderName + "/" + orientation
     if not os.path.isdir(path):
         os.makedirs (path)
 
@@ -276,25 +277,11 @@ def scale_factor(gameWidth, screenWidth, gameHeight, screenHeight):
     return scaleFactor
 
 
-def createZip(shaderName="crtpi", curvature=False, screenWidth=0, screenHeight=0):
-    if "crtpi" in shaderName:
-        if curvature:
-            outputFileName = "curvature_crt-pi_configs"
-            path = "curvature"
-        else:
-            resolution = str(screenWidth) + "x" + str(screenHeight)
-            outputFileName = resolution + "_crt-pi_configs"
-            path = resolution
-    elif "zfast" in shaderName:
-        if curvature:
-            outputFileName = "curvature_zfast_configs"
-            path = "curvature"
-        else:
-            resolution = str(screenWidth) + "x" + str(screenHeight)
-            outputFileName = resolution + "_zfast_configs"
-            path = resolution        
-    outputFileName = outputFileName.replace(" ", "")
-    outputFileName = outputFileName.lower()
+def createZip(coreName="mame2003"):
+    path = coreName
+    outputFileName = coreName + "_retropie_shader_configs"
+    #outputFileName = outputFileName.replace(" ", "_")
+    #outputFileName = outputFileName.lower()
 
     print("Creating zipfile {}".format(outputFileName))
     shutil.make_archive(outputFileName, "zip", path)
