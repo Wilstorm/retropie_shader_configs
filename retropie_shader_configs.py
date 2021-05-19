@@ -52,8 +52,8 @@ def main():
     elif "mame2016" in args.core:
         fileName = "resolution_db/mame2016.txt"
         coreName = "MAME 2016"
-    elif "fbalpha" in args.core:
-        fileName = "resolution_db/fbalpha.txt"
+    elif "fba2012" in args.core:
+        fileName = "resolution_db/fba2012.txt"
         coreName = "FB Alpha"
     elif "fbneo" in args.core:
         fileName = "resolution_db/fbneo.txt"
