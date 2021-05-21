@@ -1,16 +1,17 @@
 # creates cfg files for retropie using crt-pi or zfast
 # params are:
-# * core (eg mame2003 or fbneo)
+# * core (eg mame2003, mame2003-plus, fbneo, etc.)
 # * shader (eg crtpi or zfast)
-# * screen width (eg 1920) OR curvature
+# * curvature (eg true or false)
+# * screen width (eg 1920)
 # * screen height (eg 1080)
+# * orientation (eg horizontal, vertical or all)
 # example usage:
-# python crt_pi_configs.py mame2003 crtpi 1920 1080
-# python crt_pi_configs.py fbneo zfast 1920 1080
-# python crt_pi_configs.py consoles crtpi 1920 1080
-# python crt_pi_configs.py 2003plus zfast curvature
-# python -c "import pi_shader_configs; pi_shader_configs.createZip('crtpi',False,1920,1080)"
-# python -c "import pi_shader_configs; pi_shader_configs.createZip('zfast',True)"
+# python retropie_shader_configs.py mame2003 -s crtpi -c false -x 1920 -y 1080 -o all
+# python retropie_shader_configs.py fbneo -s zfast -c true -o horizontal
+# python retropie_shader_configs.py mame2016 -s zfast -c false -x 1280 -y 720 -o vertical
+# python retropie_shader_configs.py 2003plus -s crtpi -c true -o all
+# python -c "import retropie_shader_configs; retropie_shader_configs.createZip('mame2003')"
 
 
 from __future__ import division
