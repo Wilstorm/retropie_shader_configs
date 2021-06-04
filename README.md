@@ -85,7 +85,7 @@ Clone into a directory, navigate to that directory from a command prompt, and th
 
   ```python retropie_shader_configs.py fbneo```  
 
-This will create a folder with the resolution, i.e., *1920x1080* (or *curvature*). Within that folder will be a subfolder with the core name, i.e., *MAME 2003 (0.78)*. Within the core subfolder there will be one of three folders named all, horizontal or vertical where the individual cfgs will be saved. When the script completes it will print the path where you should transfer the files within RetroPie.
+This will create a folder with the core name, i.e., *mame2003*. Within that folder will be a subfolder with the resolution, i.e., *1920x1080* (or *curvature*). Within the resolution subfolder there will be subfolder with the shader, i.e., *crtpi* (or *zfast*) and finally within the shader subfolder there will be one of three folders named *all*, *horizontal* or *vertical* where the individual cfgs will be saved. When the script completes it will print the path where you should transfer the files within RetroPie.
 
 There's also a bat file (retropie_shader_configs.bat) you may use to generate the cfg files. It will generate the cfg and zip files containing the same information in the root. You may modify the bat file to fit you needs for different cores, shaders and resolutions. Take a look at the bat file for examples, it's fairly self-explanatory.
 
@@ -94,7 +94,7 @@ For information and an explanation on how the cfg files improve shaders see the 
 ## Additional Information:
 
 ### Resolution Databases:
-Due to updates there may be certain cores with missing, incorrect or extraneous information in the resolution db files (located in the *resolution_db* folder). They are comma delimited text files that are very easy to modify. You can update, delete or add new entries but keep only one game entry per line. You're more than welcome to submit a PR with any corrections or if you prefer to just leave a message, open an issue with the correct information and I'll update the DB files. Whatever you're more comfortable with works.
+Due to updates and/or errors in the XML files there may be certain cores with missing, incorrect or extraneous information in the resolution db files (located in the *resolution_db* folder). They are comma delimited text files that are very easy to modify. You can update, delete or add new entries but keep only one game entry per line. You're more than welcome to submit a PR with any corrections or if you prefer to just leave a message, open an issue with the correct information and I'll update the DB files. Whatever you're more comfortable with works.
 
 Below is an example from a resolution db file for the game ```1942```. The fields in order:
 
@@ -102,7 +102,7 @@ Below is an example from a resolution db file for the game ```1942```. The field
 
   ```1942,256,224,raster,vertical,3,4```
 
-If the information looks incorrect I usually check the DAT first (if it contains complete XML info), followed by the core drivers and if all else fails search the Arcade Database - ArcadeItalia located [here](http://adb.arcadeitalia.net/) for the good information.
+If the information looks incorrect I usually check the DAT/XML first (if it contains complete XML info), followed by the core drivers and if all else fails search the Arcade Database - ArcadeItalia located [here](http://adb.arcadeitalia.net/) for the good information.
 
 Also worth noting, I removed all entries with the *\<isbios\>*, *\<isdevice\>* or *\<ismechanical\>* tags. There are some other miscellaneous drivers/entries in the newer DAT's that aren't arcade machine related and will be removed in time.
 
