@@ -231,6 +231,7 @@ astrof,240,240,raster,vertical,3,4
 astrof2,240,240,raster,vertical,3,4
 astrof3,240,240,raster,vertical,3,4
 astrofl,256,192,raster,horizontal,4,3
+astropal,256,224,raster,horizontal,4,3
 astrxeaa,288,224,raster,horizontal,4,3
 astrxeac,288,224,raster,horizontal,4,3
 astyanax,256,224,raster,horizontal,4,3
@@ -480,6 +481,7 @@ boomrang,240,256,raster,vertical,3,4
 bootcamp,256,224,raster,horizontal,4,3
 boothill,256,224,raster,horizontal,4,3
 borench,320,224,raster,horizontal,4,3
+borntofi,352,256,raster,horizontal,4,3
 bosco,288,224,raster,horizontal,4,3
 boscomd,288,224,raster,horizontal,4,3
 boscomdo,288,224,raster,horizontal,4,3
@@ -512,6 +514,7 @@ brival,416,224,raster,horizontal,4,3
 brix,224,256,raster,vertical,3,4
 brkthru,240,240,raster,horizontal,4,3
 brkthruj,240,240,raster,horizontal,4,3
+bronx,224,256,raster,vertical,3,4
 brubber,240,240,raster,vertical,3,4
 brutforc,320,240,raster,horizontal,4,3
 brvblade,480,480,raster,horizontal,4,3
@@ -538,6 +541,7 @@ bubbobr1,256,224,raster,horizontal,4,3
 bubl2000,256,224,raster,horizontal,4,3
 bublbob1,256,224,raster,horizontal,4,3
 bublbob2,320,224,raster,horizontal,4,3
+bublbob2p,320,224,raster,horizontal,4,3
 bublbobl,256,224,raster,horizontal,4,3
 bublboblp,256,224,raster,horizontal,4,3
 bublboblu,256,224,raster,horizontal,4,3
@@ -582,6 +586,8 @@ cadashu,320,240,raster,horizontal,4,3
 cairblad,240,336,raster,vertical,3,4
 calibr50,240,384,raster,vertical,3,4
 calipso,224,256,raster,vertical,3,4
+calorie,256,224,raster,horizontal,4,3
+calorieb,256,224,raster,horizontal,4,3
 calspeed,512,400,raster,horizontal,4,3
 cameltrj,320,224,raster,horizontal,4,3
 cameltry,320,224,raster,horizontal,4,3
@@ -757,9 +763,11 @@ combascb,256,224,raster,horizontal,4,3
 combascj,256,224,raster,horizontal,4,3
 combasct,256,224,raster,horizontal,4,3
 combat,320,240,raster,horizontal,4,3
+combh,224,224,raster,vertical,3,4
 commandj,224,256,raster,vertical,3,4
 commando,224,256,raster,vertical,3,4
 commandu,224,256,raster,vertical,3,4
+commandw,320,224,raster,horizontal,4,3
 commsega,224,256,raster,vertical,3,4
 comotion,256,224,raster,horizontal,4,3
 compgolf,256,240,raster,horizontal,4,3
@@ -1430,6 +1438,7 @@ gakupara,384,224,raster,horizontal,4,3
 gakusai,320,240,raster,horizontal,4,3
 gakusai2,320,240,raster,horizontal,4,3
 gal10ren,640,240,raster,horizontal,4,3
+galactic,224,256,raster,vertical,3,4
 galag88b,224,288,raster,vertical,3,4
 galag88j,224,288,raster,vertical,3,4
 galaga,224,288,raster,vertical,3,4
@@ -1544,6 +1553,7 @@ ghostlop,304,224,raster,horizontal,4,3
 ghouls,384,224,raster,horizontal,4,3
 ghoulsu,384,224,raster,horizontal,4,3
 ghox,240,320,raster,vertical,3,4
+ghoxj,240,320,raster,vertical,3,4
 ghunter,256,224,raster,horizontal,4,3
 gigandes,384,240,raster,horizontal,4,3
 gigasb,224,256,raster,vertical,3,4
@@ -1889,9 +1899,10 @@ hypsptsp,304,224,raster,horizontal,4,3
 iceclimb,256,240,raster,horizontal,4,3
 iceclmbj,256,240,raster,horizontal,4,3
 iceclmrj,512,240,raster,horizontal,8,3
-ichidant,320,224,raster,horizontal,4,3
-ichidntb,320,224,raster,horizontal,4,3
-ichidnte,320,224,raster,horizontal,4,3
+ichir,320,224,raster,horizontal,4,3
+ichirj,320,224,raster,horizontal,4,3
+ichirjbl,320,224,raster,horizontal,4,3
+ichirk,320,224,raster,horizontal,4,3
 idhimitu,512,224,raster,horizontal,4,3
 idolmj,352,240,raster,horizontal,4,3
 idsoccer,240,192,raster,horizontal,4,3
@@ -1911,7 +1922,7 @@ imgfight,256,384,raster,vertical,3,4
 imsorry,256,224,raster,horizontal,4,3
 imsorryj,256,224,raster,horizontal,4,3
 inca,512,240,raster,horizontal,4,3
-indianbt,224,240,raster,vertical,3,4
+indianbt,224,256,raster,vertical,3,4
 indyheat,320,240,raster,horizontal,4,3
 indytem2,336,240,raster,horizontal,4,3
 indytem3,336,240,raster,horizontal,4,3
@@ -1933,6 +1944,9 @@ invaddlx,224,240,raster,vertical,3,4
 invaderl,224,240,raster,vertical,3,4
 invaders,224,240,raster,vertical,3,4
 invadpt2,224,240,raster,vertical,3,4
+invasioa,224,240,raster,vertical,3,4
+invasiob,224,240,raster,vertical,3,4
+invasion,224,240,raster,vertical,3,4
 invds,224,256,raster,vertical,3,4
 invho2,224,256,raster,vertical,3,4
 invinco,224,256,raster,vertical,3,4
@@ -2606,6 +2620,7 @@ mrkougb,224,256,raster,vertical,3,4
 mrkougr2,224,256,raster,vertical,3,4
 mrlo,192,240,raster,vertical,3,4
 mrokumei,432,224,raster,horizontal,4,3
+mrsdyna,192,240,raster,vertical,3,4
 mrtnt,224,288,raster,vertical,3,4
 mrviking,224,240,raster,vertical,3,4
 mrvikngj,224,240,raster,vertical,3,4
@@ -2648,6 +2663,7 @@ mspacman,224,288,raster,vertical,3,4
 mspacmat,224,288,raster,vertical,3,4
 mspacmnf,224,288,raster,vertical,3,4
 mspacpls,224,288,raster,vertical,3,4
+mspactwin,224,288,raster,vertical,3,4
 mstadium,288,224,raster,horizontal,4,3
 msword,384,224,raster,horizontal,4,3
 mswordj,384,224,raster,horizontal,4,3
@@ -3389,6 +3405,7 @@ rckman2j,384,224,raster,horizontal,4,3
 rdaction,256,192,raster,horizontal,4,3
 reactor,256,240,raster,horizontal,4,3
 realbrk,320,224,raster,horizontal,4,3
+recalh,320,232,raster,horizontal,4,3
 recordbr,320,240,raster,horizontal,4,3
 redalert,240,256,raster,vertical,3,4
 redbaron,0,0,vector,horizontal,4,3
@@ -3987,6 +4004,7 @@ spacewr3,224,240,raster,vertical,3,4
 spacezap,320,204,raster,horizontal,4,3
 spacfura,0,0,vector,horizontal,4,3
 spacfury,0,0,vector,horizontal,4,3
+spacmiss,224,256,raster,vertical,3,4
 spang,384,240,raster,horizontal,4,3
 sparkman,256,224,raster,horizontal,4,3
 sparkz,336,240,raster,horizontal,4,3
@@ -4063,6 +4081,7 @@ spyu,304,224,raster,horizontal,4,3
 sqbert,240,256,raster,vertical,3,4
 sqixbl,224,256,raster,vertical,3,4
 squash,320,240,raster,horizontal,4,3
+sraider,192,240,raster,vertical,3,4
 sranger,256,224,raster,horizontal,4,3
 srangerb,256,224,raster,horizontal,4,3
 srangerw,256,224,raster,horizontal,4,3
@@ -4311,6 +4330,7 @@ tankfrcj,288,224,raster,horizontal,4,3
 tantr,320,224,raster,horizontal,4,3
 tantrbl,320,224,raster,horizontal,4,3
 tantrbl2,320,224,raster,horizontal,4,3
+tantrkor,320,224,raster,horizontal,4,3
 taotaida,320,224,raster,horizontal,4,3
 taotaido,320,224,raster,horizontal,4,3
 tapper,512,480,raster,horizontal,4,3
@@ -4513,7 +4533,7 @@ touchgok,480,240,raster,horizontal,4,3
 tourtab2,160,200,raster,horizontal,4,3
 tourtabl,160,200,raster,horizontal,4,3
 toutrun,320,224,raster,horizontal,4,3
-toutruna,320,224,raster,horizontal,4,3
+toutrun3,320,224,raster,horizontal,4,3
 toypop,288,224,raster,horizontal,4,3
 tp2m32,320,224,raster,horizontal,4,3
 tp84,224,256,raster,vertical,3,4
@@ -4829,6 +4849,7 @@ wh1,320,224,raster,horizontal,4,3
 wh1h,320,224,raster,horizontal,4,3
 wh2,304,224,raster,horizontal,4,3
 wh2j,304,224,raster,horizontal,4,3
+wheelrun,256,224,raster,horizontal,4,3
 whizquiz,256,224,raster,horizontal,4,3
 whizz,384,224,raster,horizontal,4,3
 whodunit,320,240,raster,horizontal,4,3
