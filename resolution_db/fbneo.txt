@@ -175,6 +175,7 @@ alienres,224,288,raster,vertical,3,4
 aliens,288,224,raster,horizontal,4,3
 aliens2,288,224,raster,horizontal,4,3
 aliens3,288,224,raster,horizontal,4,3
+aliens4,288,224,raster,horizontal,4,3
 aliensa,288,224,raster,horizontal,4,3
 aliensec,288,224,raster,horizontal,4,3
 aliensj,288,224,raster,horizontal,4,3
@@ -193,6 +194,7 @@ aligators,320,240,raster,horizontal,4,3
 aligatorun,320,240,raster,horizontal,4,3
 aligatoruna,320,240,raster,horizontal,4,3
 alinvade,128,128,raster,horizontal,4,3
+alpha1v,240,256,raster,horizontal,4,3
 alpham2,304,224,raster,horizontal,4,3
 alpham2p,304,224,raster,horizontal,4,3
 alphamis,216,288,raster,vertical,3,4
@@ -308,6 +310,7 @@ armwar,384,224,raster,horizontal,4,3
 armwar1d,384,224,raster,horizontal,4,3
 armwara,384,224,raster,horizontal,4,3
 armwarar1,384,224,raster,horizontal,4,3
+armwarb,384,224,raster,horizontal,4,3
 armwarr1,384,224,raster,horizontal,4,3
 armwaru,384,224,raster,horizontal,4,3
 armwaru1,384,224,raster,horizontal,4,3
@@ -346,11 +349,14 @@ astormud,320,224,raster,horizontal,4,3
 astrians,224,256,raster,vertical,3,4
 astrofl,256,192,raster,horizontal,4,3
 astyanax,256,224,raster,horizontal,4,3
+astyanaxa,256,224,raster,horizontal,4,3
 asuka,240,320,raster,vertical,3,4
 asukaj,240,320,raster,vertical,3,4
 asurabld,320,240,raster,horizontal,4,3
 asurabus,320,240,raster,horizontal,4,3
-asurabusa,320,240,raster,horizontal,4,3
+asurabusj,320,240,raster,horizontal,4,3
+asurabusja,320,240,raster,horizontal,4,3
+asurabusjr,320,240,raster,horizontal,4,3
 ataqandr,224,256,raster,vertical,3,4
 atehate,384,240,raster,horizontal,4,3
 atetris,336,240,raster,horizontal,4,3
@@ -564,6 +570,7 @@ blazeon,320,232,raster,horizontal,4,3
 blazeonj,320,232,raster,horizontal,4,3
 blazer,224,288,raster,vertical,3,4
 blazstar,304,224,raster,horizontal,4,3
+blazstarcm,304,224,raster,horizontal,4,3
 blkbustr,224,240,raster,vertical,3,4
 blkdrgon,256,224,raster,horizontal,4,3
 blkdrgonb,256,224,raster,horizontal,4,3
@@ -678,6 +685,7 @@ brix,224,256,raster,vertical,3,4
 brkrevext,320,224,raster,horizontal,4,3
 brkthru,240,240,raster,horizontal,4,3
 brkthruj,240,240,raster,horizontal,4,3
+bronx,224,256,raster,vertical,3,4
 brubber,240,256,raster,vertical,3,4
 bshark,320,240,raster,horizontal,4,3
 bsharkj,320,240,raster,horizontal,4,3
@@ -718,6 +726,7 @@ bublboblp,256,224,raster,horizontal,4,3
 bublboblr,256,224,raster,horizontal,4,3
 bublboblr1,256,224,raster,horizontal,4,3
 bublboblu,256,224,raster,horizontal,4,3
+bublbust,320,224,raster,horizontal,4,3
 bublcave,256,224,raster,horizontal,4,3
 bublcave10,256,224,raster,horizontal,4,3
 bublcave11,256,224,raster,horizontal,4,3
@@ -908,6 +917,10 @@ chikij,384,224,raster,horizontal,4,3
 chimerab,256,224,raster,horizontal,4,3
 chinagat,256,240,raster,horizontal,4,3
 chinatwn,320,240,raster,horizontal,4,3
+chinhero,224,288,raster,vertical,3,4
+chinhero2,224,288,raster,vertical,3,4
+chinhero3,224,288,raster,vertical,3,4
+chinherot,224,288,raster,vertical,3,4
 chkun,224,256,raster,vertical,3,4
 chokchok,320,240,raster,horizontal,4,3
 choko,384,224,raster,horizontal,4,3
@@ -986,6 +999,7 @@ cocean1a,240,256,raster,vertical,3,4
 cocean6b,240,256,raster,vertical,3,4
 colony7,240,292,raster,vertical,3,4
 colony7a,240,292,raster,vertical,3,4
+colt,256,224,raster,horizontal,4,3
 columnsn,304,224,raster,horizontal,4,3
 combatsc,256,224,raster,horizontal,4,3
 combh,224,224,raster,vertical,3,4
@@ -1082,6 +1096,7 @@ crsword,304,224,raster,horizontal,4,3
 cruisin,240,224,raster,horizontal,4,3
 crush,224,288,raster,vertical,3,4
 crush2,224,288,raster,vertical,3,4
+crush3,224,288,raster,vertical,3,4
 crush4,224,288,raster,vertical,3,4
 crush5,224,288,raster,vertical,3,4
 crushbl,224,288,raster,vertical,3,4
@@ -1147,6 +1162,7 @@ cybotsjd,384,224,raster,horizontal,4,3
 cybotsu,384,224,raster,horizontal,4,3
 cybotsud,384,224,raster,horizontal,4,3
 cyclemb,256,224,raster,horizontal,4,3
+cyclshtg,224,256,raster,vertical,3,4
 cyvern,240,320,raster,vertical,3,4
 cyvernj,240,320,raster,vertical,3,4
 czeroize,240,256,raster,vertical,3,4
@@ -1416,6 +1432,8 @@ dinotpic,384,224,raster,horizontal,4,3
 dinou,384,224,raster,horizontal,4,3
 dirtfoxj,224,288,raster,vertical,3,4
 disco,240,242,raster,vertical,3,4
+discoboy,240,384,raster,vertical,3,4
+discoboyp,240,384,raster,vertical,3,4
 discof,240,242,raster,vertical,3,4
 divebomb,224,256,raster,vertical,3,4
 diverboy,320,240,raster,horizontal,4,3
@@ -1426,6 +1444,7 @@ djboyu,256,224,raster,horizontal,4,3
 djboyua,256,224,raster,horizontal,4,3
 dkcbarrel,224,256,raster,vertical,3,4
 dkchrmx,224,256,raster,vertical,3,4
+dkfreerun,224,256,raster,vertical,3,4
 dkgensan,384,256,raster,horizontal,4,3
 dkgensanm72,384,256,raster,horizontal,4,3
 dkingjr,224,256,raster,vertical,3,4
@@ -1433,8 +1452,12 @@ dkong,224,256,raster,vertical,3,4
 dkong3,224,256,raster,vertical,3,4
 dkong3b,224,256,raster,vertical,3,4
 dkong3j,224,256,raster,vertical,3,4
+dkongbp,224,256,raster,vertical,3,4
+dkongchm,224,256,raster,vertical,3,4
+dkongchm1,224,256,raster,vertical,3,4
 dkongf,224,256,raster,vertical,3,4
 dkonghrd,224,256,raster,vertical,3,4
+dkongitd,224,256,raster,vertical,3,4
 dkongj,224,256,raster,vertical,3,4
 dkongjnrj,224,256,raster,vertical,3,4
 dkongjo,224,256,raster,vertical,3,4
@@ -1451,6 +1474,10 @@ dkongpac,224,256,raster,vertical,3,4
 dkongpe,224,256,raster,vertical,3,4
 dkongran1,224,256,raster,vertical,3,4
 dkongrev,224,256,raster,vertical,3,4
+dkongss,224,256,raster,vertical,3,4
+dkongst,224,256,raster,vertical,3,4
+dkongst2,224,256,raster,vertical,3,4
+dkongtj,224,256,raster,vertical,3,4
 dkongx,224,256,raster,vertical,3,4
 dkongx11,224,256,raster,vertical,3,4
 dkpace,224,256,raster,vertical,3,4
@@ -1468,6 +1495,8 @@ dmnfrntpcb,448,224,raster,horizontal,4,3
 dmnfrntpcba,448,224,raster,horizontal,4,3
 dngrtrck,288,224,raster,horizontal,4,3
 docastle,192,240,raster,vertical,3,4
+docastle2,192,240,raster,vertical,3,4
+docastleo,192,240,raster,vertical,3,4
 dockman,224,256,raster,vertical,3,4
 dodgeman,256,224,raster,horizontal,4,3
 dogfgt,256,240,raster,horizontal,4,3
@@ -1497,6 +1526,9 @@ dorachan,240,256,raster,vertical,3,4
 dorodon,196,240,raster,vertical,3,4
 dorodon2,196,240,raster,vertical,3,4
 dorunrun,240,192,raster,horizontal,4,3
+dorunrun2,240,192,raster,horizontal,4,3
+dorunrunc,240,192,raster,horizontal,4,3
+dorunrunca,240,192,raster,horizontal,4,3
 dotrikun,256,192,raster,horizontal,4,3
 dotrikun2,256,192,raster,horizontal,4,3
 dotriman,256,192,raster,horizontal,4,3
@@ -1506,6 +1538,7 @@ dotrone,512,480,raster,horizontal,4,3
 doubledr,320,224,raster,horizontal,4,3
 doubledrbh,320,224,raster,horizontal,4,3
 doubledrsp,320,224,raster,horizontal,4,3
+douni,192,240,raster,vertical,3,4
 dowild,240,192,raster,horizontal,4,3
 downtown,224,384,raster,vertical,3,4
 downtown2,224,384,raster,vertical,3,4
@@ -1595,6 +1628,7 @@ dygera,224,384,raster,vertical,3,4
 dynablst,320,240,raster,horizontal,4,3
 dynabomb,384,240,raster,horizontal,4,3
 dynagear,336,240,raster,horizontal,4,3
+dynamski,224,288,raster,vertical,3,4
 dynduke,256,224,raster,horizontal,4,3
 dyndukea,256,224,raster,horizontal,4,3
 dyndukej,256,224,raster,horizontal,4,3
@@ -1698,6 +1732,9 @@ excthour,240,256,raster,vertical,3,4
 exctleag,320,224,raster,horizontal,4,3
 exctleagd,320,224,raster,horizontal,4,3
 exedexes,224,256,raster,vertical,3,4
+exerion,224,320,raster,vertical,3,4
+exerionb,224,320,raster,vertical,3,4
+exeriont,224,320,raster,vertical,3,4
 exerizer,224,320,raster,vertical,3,4
 exerizerb,224,320,raster,vertical,3,4
 exodus,224,256,raster,vertical,3,4
@@ -1926,6 +1963,7 @@ fort2b,320,240,raster,horizontal,4,3
 fort2ba,320,240,raster,horizontal,4,3
 fourtrax,288,224,raster,horizontal,4,3
 fourtraxa,288,224,raster,horizontal,4,3
+fourtraxj,288,224,raster,horizontal,4,3
 fpoint,320,224,raster,horizontal,4,3
 fpoint1,320,224,raster,horizontal,4,3
 fpoint1d,320,224,raster,horizontal,4,3
@@ -2048,6 +2086,7 @@ galpanisa,320,240,raster,horizontal,4,3
 galpanise,320,240,raster,horizontal,4,3
 galpanisj,320,240,raster,horizontal,4,3
 galpanisk,320,240,raster,horizontal,4,3
+galpaniska,320,240,raster,horizontal,4,3
 galpans2,320,240,raster,horizontal,4,3
 galpans2a,320,240,raster,horizontal,4,3
 galpans2j,320,240,raster,horizontal,4,3
@@ -2485,6 +2524,7 @@ hiimpactp,396,256,raster,horizontal,4,3
 himesiki,192,256,raster,vertical,3,4
 hipoly,256,224,raster,horizontal,4,3
 hippodrm,256,240,raster,horizontal,4,3
+hiryuken,288,224,raster,horizontal,4,3
 hishouza,240,320,raster,vertical,3,4
 hitice,320,224,raster,horizontal,4,3
 hiticej,320,224,raster,horizontal,4,3
@@ -2616,6 +2656,7 @@ inufuku,320,224,raster,horizontal,4,3
 invaders,224,260,raster,vertical,3,4
 inyourfa,256,224,raster,horizontal,4,3
 iqblock,512,240,raster,horizontal,4,3
+irion,224,320,raster,vertical,3,4
 ironclad,304,224,raster,horizontal,4,3
 ironclado,304,224,raster,horizontal,4,3
 ironfort,320,240,raster,horizontal,4,3
@@ -2676,6 +2717,7 @@ jojoban,384,224,raster,horizontal,4,3
 jojobane,384,224,raster,horizontal,4,3
 jojobaner1,384,224,raster,horizontal,4,3
 jojobanr1,384,224,raster,horizontal,4,3
+jojobanrb,384,224,raster,horizontal,4,3
 jojobar1,384,224,raster,horizontal,4,3
 jojoj,384,224,raster,horizontal,4,3
 jojojr1,384,224,raster,horizontal,4,3
@@ -2773,6 +2815,7 @@ kbash,320,240,raster,horizontal,4,3
 kbash2,320,240,raster,horizontal,4,3
 kbashk,320,240,raster,horizontal,4,3
 kchamp,224,256,raster,vertical,3,4
+kchamptec,224,256,raster,vertical,3,4
 kchampvs,224,256,raster,vertical,3,4
 kchampvs2,224,256,raster,vertical,3,4
 kchampvs3,224,256,raster,vertical,3,4
@@ -3250,6 +3293,7 @@ magixb,384,240,raster,horizontal,4,3
 maglord,320,224,raster,horizontal,4,3
 maglordh,320,224,raster,horizontal,4,3
 magmax,256,224,raster,horizontal,4,3
+magmaxa,256,224,raster,horizontal,4,3
 mahoudai,240,320,raster,vertical,3,4
 mahretsu,304,224,raster,horizontal,4,3
 mainevt,288,224,raster,horizontal,4,3
@@ -3421,6 +3465,9 @@ mirninja,288,224,raster,horizontal,4,3
 misncrft,236,320,raster,vertical,3,4
 misncrfta,236,320,raster,vertical,3,4
 missb2,256,224,raster,horizontal,4,3
+missile,256,231,raster,horizontal,4,3
+missile1,256,231,raster,horizontal,4,3
+missile2,256,231,raster,horizontal,4,3
 missmw96,256,224,raster,horizontal,4,3
 missw02,256,224,raster,horizontal,4,3
 missw96,256,224,raster,horizontal,4,3
@@ -3533,6 +3580,7 @@ moshougi,304,224,raster,horizontal,4,3
 motorace,256,240,raster,vertical,3,4
 motos,224,288,raster,vertical,3,4
 mototour,256,240,raster,vertical,3,4
+mototoura,256,240,raster,vertical,3,4
 mouncrst,224,256,raster,vertical,3,4
 mouser,224,256,raster,vertical,3,4
 mouserc,224,256,raster,vertical,3,4
@@ -3542,11 +3590,11 @@ mpangj,384,224,raster,horizontal,4,3
 mpangjd,384,224,raster,horizontal,4,3
 mpangr1,384,224,raster,horizontal,4,3
 mpangu,384,224,raster,horizontal,4,3
-mpatrol,240,240,raster,horizontal,4,3
-mpatrolw,240,240,raster,horizontal,4,3
+mpatrol,240,252,raster,horizontal,4,3
+mpatrolw,240,252,raster,horizontal,4,3
 mplanets,240,256,raster,vertical,3,4
 mplanetsuk,240,256,raster,vertical,3,4
-mranger,240,240,raster,horizontal,4,3
+mranger,240,252,raster,horizontal,4,3
 mrdig,320,236,raster,horizontal,4,3
 mrdo,192,240,raster,vertical,3,4
 mrdobl,192,240,raster,vertical,3,4
@@ -3621,6 +3669,7 @@ mslug3v,304,224,raster,horizontal,4,3
 mslug4,304,224,raster,horizontal,4,3
 mslug4dg,304,224,raster,horizontal,4,3
 mslug4h,304,224,raster,horizontal,4,3
+mslug4lw,304,224,raster,horizontal,4,3
 mslug5,304,224,raster,horizontal,4,3
 mslug5b,304,224,raster,horizontal,4,3
 mslug5b2,304,224,raster,horizontal,4,3
@@ -3845,6 +3894,7 @@ nitdbl,304,224,raster,horizontal,4,3
 nitedrvr,512,512,raster,horizontal,4,3
 nitrobal,240,320,raster,vertical,3,4
 nitrobala,240,320,raster,vertical,3,4
+nitrobalb,240,320,raster,vertical,3,4
 nkdodge,256,240,raster,horizontal,4,3
 nkdodgeb,256,240,raster,horizontal,4,3
 nmaster,384,240,raster,horizontal,4,3
@@ -3885,6 +3935,7 @@ nwarrh,384,224,raster,horizontal,4,3
 nwarru,384,224,raster,horizontal,4,3
 nwarrud,384,224,raster,horizontal,4,3
 nyanpani,256,224,raster,horizontal,4,3
+nycaptor,256,224,raster,horizontal,4,3
 nzeroteam,320,256,raster,horizontal,4,3
 nzeroteama,320,256,raster,horizontal,4,3
 oedfight,320,240,raster,horizontal,4,3
@@ -4021,6 +4072,7 @@ pacplus,224,288,raster,vertical,3,4
 pacuman,224,288,raster,vertical,3,4
 paddle2,224,256,raster,vertical,3,4
 paddlema,224,256,raster,vertical,3,4
+painter,224,288,raster,vertical,3,4
 paintrlr,224,288,raster,vertical,3,4
 pairlove,240,384,raster,vertical,3,4
 pairs,384,240,raster,horizontal,4,3
@@ -4449,6 +4501,7 @@ rackemup,224,256,raster,vertical,3,4
 racknrol,256,224,raster,horizontal,4,3
 radarscp,224,256,raster,vertical,3,4
 radarscp1,224,256,raster,vertical,3,4
+radarscpc,224,256,raster,vertical,3,4
 radm,320,224,raster,horizontal,4,3
 radmu,320,224,raster,horizontal,4,3
 radr,416,224,raster,horizontal,4,3
@@ -4457,6 +4510,7 @@ radradj,256,224,raster,horizontal,4,3
 radrj,416,224,raster,horizontal,4,3
 radru,416,224,raster,horizontal,4,3
 raflesia,224,256,raster,vertical,3,4
+raflesiau,224,256,raster,vertical,3,4
 ragnagrd,320,224,raster,horizontal,4,3
 ragtime,320,240,raster,horizontal,4,3
 ragtimea,320,240,raster,horizontal,4,3
@@ -4770,6 +4824,7 @@ rygarb,256,224,raster,horizontal,4,3
 rygarj,256,224,raster,horizontal,4,3
 ryorioh,336,240,raster,horizontal,4,3
 ryouran,320,240,raster,horizontal,4,3
+ryourano,320,240,raster,horizontal,4,3
 ryujin,224,320,raster,vertical,3,4
 ryujina,224,320,raster,vertical,3,4
 ryukendn,256,224,raster,horizontal,4,3
@@ -5220,6 +5275,7 @@ shangha3,384,224,raster,horizontal,4,3
 shangha3j,384,224,raster,horizontal,4,3
 shangha3u,384,224,raster,horizontal,4,3
 shangha3up,384,224,raster,horizontal,4,3
+shangkid,288,224,raster,horizontal,4,3
 shangon,320,224,raster,horizontal,4,3
 shangon1,320,224,raster,horizontal,4,3
 shangon2,320,224,raster,horizontal,4,3
@@ -5294,6 +5350,7 @@ silkroad,380,224,raster,horizontal,4,3
 silkroada,380,224,raster,horizontal,4,3
 silkworm,256,224,raster,horizontal,4,3
 silkwormb,256,224,raster,horizontal,4,3
+silkwormb2,256,224,raster,horizontal,4,3
 silkwormj,256,224,raster,horizontal,4,3
 silkwormp,256,224,raster,horizontal,4,3
 silvland,256,224,raster,horizontal,4,3
@@ -5346,6 +5403,7 @@ skyraidr,224,256,raster,vertical,3,4
 skyrobo,320,240,raster,horizontal,4,3
 skyshark,240,320,raster,vertical,3,4
 skysharka,240,320,raster,vertical,3,4
+skysharkb,240,320,raster,vertical,3,4
 skyskipr,512,448,raster,horizontal,4,3
 skysmash,224,256,raster,vertical,3,4
 skysoldr,224,256,raster,vertical,3,4
@@ -5477,6 +5535,7 @@ spcdraga,224,256,raster,vertical,3,4
 spcinv95,224,320,raster,vertical,3,4
 spcinv95u,224,320,raster,vertical,3,4
 spcinvdj,320,232,raster,horizontal,4,3
+spcmission,224,256,raster,vertical,3,4
 spcpostn,240,256,raster,vertical,3,4
 spcrocks,640,480,raster,horizontal,4,3
 spctbird,224,256,raster,vertical,3,4
@@ -5507,6 +5566,7 @@ spidermi,304,224,raster,horizontal,4,3
 spidman,320,224,raster,horizontal,4,3
 spidmanj,320,224,raster,horizontal,4,3
 spidmanu,320,224,raster,horizontal,4,3
+spiero,240,192,raster,horizontal,4,3
 spinlbrk,352,240,raster,horizontal,4,3
 spinlbrkj,352,240,raster,horizontal,4,3
 spinlbrku,352,240,raster,horizontal,4,3
@@ -5719,6 +5779,8 @@ suprheli,224,256,raster,vertical,3,4
 suprleag,320,224,raster,horizontal,4,3
 suprloco,240,224,raster,horizontal,4,3
 suprlocoo,240,224,raster,horizontal,4,3
+suprmatk,256,231,raster,horizontal,4,3
+suprmatkd,256,231,raster,horizontal,4,3
 suprmous,224,256,raster,vertical,3,4
 suprridr,224,256,raster,vertical,3,4
 suprtrio,320,240,raster,horizontal,4,3
@@ -5743,6 +5805,7 @@ svcsplus,304,224,raster,horizontal,4,3
 svf,320,224,raster,horizontal,4,3
 svfo,320,224,raster,horizontal,4,3
 svg,448,224,raster,horizontal,4,3
+svghk,448,224,raster,horizontal,4,3
 svgpcb,448,224,raster,horizontal,4,3
 svolley,288,216,raster,horizontal,4,3
 svolleyk,288,216,raster,horizontal,4,3
@@ -6203,7 +6266,7 @@ umk3pb1,400,256,raster,horizontal,4,3
 umk3r10,400,256,raster,horizontal,4,3
 umk3r11,400,256,raster,horizontal,4,3
 umk3te,400,256,raster,horizontal,4,3
-umk3uc,400,256,raster,horizontal,4,3
+umk3uk,400,256,raster,horizontal,4,3
 unclepoo,224,256,raster,vertical,3,4
 undrfire,320,232,raster,horizontal,4,3
 undrfirej,320,232,raster,horizontal,4,3
