@@ -581,6 +581,7 @@ cabalus,256,224,raster,horizontal,4,3
 cabalus2,256,224,raster,horizontal,4,3
 cabaret,512,240,raster,horizontal,4,3
 cachat,320,224,raster,horizontal,4,3
+cadanglr,240,240,raster,vertical,3,4
 cadash,320,240,raster,horizontal,4,3
 cadashf,320,240,raster,horizontal,4,3
 cadashi,320,240,raster,horizontal,4,3
@@ -657,6 +658,7 @@ centtime,240,256,raster,vertical,3,4
 cerberus,320,240,raster,horizontal,4,3
 cexplore,240,240,raster,vertical,3,4
 cfghtice,240,240,raster,vertical,3,4
+cfishing,240,240,raster,vertical,3,4
 cflyball,240,240,raster,vertical,3,4
 cgangpzj,304,224,raster,horizontal,4,3
 cgangpzl,304,224,raster,horizontal,4,3
@@ -918,7 +920,7 @@ cybrcycc,640,480,raster,horizontal,4,3
 cybsled,496,480,raster,horizontal,4,3
 cyclshtg,224,256,raster,vertical,3,4
 cyvern,240,320,raster,vertical,3,4
-czeroize,240,240,raster,vertical,3,4
+czeroize,240,248,raster,vertical,3,4
 dadandrn,288,224,raster,horizontal,4,3
 daikaiju,224,256,raster,vertical,3,4
 daimakai,384,224,raster,horizontal,4,3
@@ -1055,6 +1057,7 @@ devzone2,192,256,raster,vertical,3,4
 dfeveron,240,320,raster,vertical,3,4
 dharma,320,224,raster,horizontal,4,3
 diamond,256,224,raster,horizontal,4,3
+dicegame,320,240,raster,horizontal,4,3
 diehard,704,480,raster,horizontal,4,3
 dietgo,320,240,raster,horizontal,4,3
 dietgoe,320,240,raster,horizontal,4,3
@@ -1081,6 +1084,7 @@ disco,240,240,raster,vertical,3,4
 discof,240,240,raster,vertical,3,4
 diverboy,318,240,raster,horizontal,4,3
 djboy,256,224,raster,horizontal,4,3
+djboyj,256,224,raster,horizontal,4,3
 dkgenm72,384,256,raster,horizontal,4,3
 dkgensan,384,256,raster,horizontal,4,3
 dkngjnrb,224,256,raster,vertical,3,4
@@ -1314,6 +1318,7 @@ fantland,352,256,raster,horizontal,4,3
 fantsia2,256,224,raster,horizontal,4,3
 fantsy95,224,256,raster,vertical,3,4
 fantzn2,256,192,raster,horizontal,4,3
+fantzn2x,320,224,raster,horizontal,4,3
 fantzone,320,224,raster,horizontal,4,3
 fantzono,320,224,raster,horizontal,4,3
 farwest,240,224,raster,horizontal,4,3
@@ -1897,6 +1902,7 @@ hydrap2,336,240,raster,horizontal,4,3
 hyhoo,224,512,raster,vertical,3,4
 hyhoo2,224,512,raster,vertical,3,4
 hyouban,638,240,raster,horizontal,4,3
+hypernoid,304,224,raster,horizontal,4,3
 hyperpac,256,224,raster,horizontal,4,3
 hyperpcb,256,224,raster,horizontal,4,3
 hyperspt,256,224,raster,horizontal,4,3
@@ -2265,10 +2271,10 @@ lightbr,320,224,raster,horizontal,4,3
 liquidk,320,224,raster,horizontal,4,3
 liquidku,320,224,raster,horizontal,4,3
 lizwiz,224,288,raster,vertical,3,4
-lkage,256,224,raster,horizontal,4,3
-lkageb,256,224,raster,horizontal,4,3
-lkageb2,256,224,raster,horizontal,4,3
-lkageb3,256,224,raster,horizontal,4,3
+lkage,240,224,raster,horizontal,4,3
+lkageb,232,224,raster,horizontal,4,3
+lkageb2,232,224,raster,horizontal,4,3
+lkageb3,232,224,raster,horizontal,4,3
 llander,0,0,vector,horizontal,4,3
 llander1,0,0,vector,horizontal,4,3
 lnc,240,240,raster,vertical,3,4
@@ -2377,6 +2383,7 @@ marble,336,240,raster,horizontal,4,3
 marble2,336,240,raster,horizontal,4,3
 marble3,336,240,raster,horizontal,4,3
 marble4,336,240,raster,horizontal,4,3
+marblmd2,336,240,raster,horizontal,4,3
 marineb,256,224,raster,horizontal,4,3
 marinedt,224,288,raster,vertical,3,4
 mariner,224,256,raster,vertical,3,4
@@ -2435,6 +2442,7 @@ megamn2a,384,224,raster,horizontal,4,3
 megatack,256,256,raster,horizontal,4,3
 megaznik,224,288,raster,vertical,3,4
 megazone,224,288,raster,vertical,3,4
+megrescu,192,256,raster,vertical,3,4
 meikyuh,256,240,raster,horizontal,4,3
 meosism,336,240,raster,horizontal,4,3
 mercs,224,384,raster,vertical,3,4
